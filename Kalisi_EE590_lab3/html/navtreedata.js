@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "EE 590: Lab 3", "index.html", [
+  [ "Lab3 EE 590", "index.html", [
     [ "Base functions for Lab 3", "index.html", "index" ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
