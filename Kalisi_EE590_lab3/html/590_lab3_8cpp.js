@@ -1,0 +1,27 @@
+var 590_lab3_8cpp =
+[
+    [ "LEDR", "590_lab3_8cpp.html#a988efc1db523aab3ae92974b199e9599", null ],
+    [ "addElement", "590_lab3_8cpp.html#a68406c3105b30484589792cf7ede6b52", null ],
+    [ "array_modify", "590_lab3_8cpp.html#ae6ddee90069a7c44cef2d9084f81bfde", null ],
+    [ "factorial", "590_lab3_8cpp.html#ac80f73d5b7416fd9fcb93a068838c4e1", null ],
+    [ "fibonacci", "590_lab3_8cpp.html#a1a4d114a9f512dafadeacca6e7bec93e", null ],
+    [ "freeArray", "590_lab3_8cpp.html#a250c39fe964b6e69dd99e691382480b6", null ],
+    [ "freeBuffer", "590_lab3_8cpp.html#acc9c49fef89cd6c91570acaa3fe4367e", null ],
+    [ "initArray", "590_lab3_8cpp.html#af43f39ae06db924f83df6523a2bd92c9", null ],
+    [ "initBuffer", "590_lab3_8cpp.html#a0e98f292adc3de5680b8c87e0aabf7b1", null ],
+    [ "isEmpty", "590_lab3_8cpp.html#a39f9eeca3cac2781c49fcede276bdbbd", null ],
+    [ "isFull", "590_lab3_8cpp.html#a65254c2cddaccc21e8f177cd44458b7b", null ],
+    [ "mem_copy", "590_lab3_8cpp.html#a453451e148f8458753e20954fb0427df", null ],
+    [ "pointer_distance", "590_lab3_8cpp.html#a8fddfdc5cec1d8650dc3ac4ba932eb61", null ],
+    [ "popBuffer", "590_lab3_8cpp.html#a0bbb5ddb5ef455668d0ec985b5179e3f", null ],
+    [ "print_static_array", "590_lab3_8cpp.html#a65c78ae0150a2d9bfc377f6a8c2d1b38", null ],
+    [ "print_truth_table", "590_lab3_8cpp.html#a7009294e49a033ef10cdd86d3114e0fb", null ],
+    [ "printArray", "590_lab3_8cpp.html#ad9359e6769c3880d369b91b3f3cae303", null ],
+    [ "pushBuffer", "590_lab3_8cpp.html#a01d237bb4346ae8d4eb5beb15cd95d3f", null ],
+    [ "readBuffer", "590_lab3_8cpp.html#a7a5abf3da6033eaeca8899bc37465950", null ],
+    [ "resizeBuffer", "590_lab3_8cpp.html#a23d9abf649cc5746bfab52c36a4bd942", null ],
+    [ "reverseString", "590_lab3_8cpp.html#adbbf07da72c3e7b8ebb4d29740e19c9f", null ],
+    [ "simulateSensorData", "590_lab3_8cpp.html#ac02f21c596378e21045dcafa6fba7a5e", null ],
+    [ "str_to_int", "590_lab3_8cpp.html#a226b065de5075e62c78bbb96d42ca796", null ],
+    [ "writeBuffer", "590_lab3_8cpp.html#ae9da2f9d7676953b0620a1fa39002f5d", null ]
+];

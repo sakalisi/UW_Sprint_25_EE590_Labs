@@ -1,0 +1,461 @@
+\doxysection{590Lab3.\+cpp}
+\hypertarget{590_lab3_8cpp_source}{}\label{590_lab3_8cpp_source}\mbox{\hyperlink{590_lab3_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00020}00020\ \textcolor{comment}{//\ ===========\ Libraries\ ===========}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{590_lab3_8h}{590Lab3.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_special590functions_8h}{Special590functions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}soc/timer\_group\_reg.h"{}}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00030}\mbox{\hyperlink{590_lab3_8cpp_a988efc1db523aab3ae92974b199e9599}{00030}}\ \textcolor{preprocessor}{\#define\ LEDR\ 10}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00047}\mbox{\hyperlink{590_lab3_8cpp_a1a4d114a9f512dafadeacca6e7bec93e}{00047}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a1a4d114a9f512dafadeacca6e7bec93e}{fibonacci}}(\textcolor{keywordtype}{int}\ N,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ **sequence)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00048}00048\ \ \ \textcolor{comment}{//\ to\ do}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00049}00049\ \ \ \textcolor{comment}{//\ task\ 2\ step\ 1:\ Print\ the\ fibonacdi\ sequence\ upto\ digit\ n}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00050}00050\ \ \ \textcolor{keywordflow}{if}(N\ <\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00052}00052\ \ \ *sequence\ =\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}*)\ malloc(N\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}));}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00054}00054\ \ \ \textcolor{keywordflow}{if}(*sequence\ ==\ NULL)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00056}00056\ \ \ \textcolor{keywordflow}{if}(N\ >\ 0)\ (*sequence)[0]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00057}00057\ \ \ \textcolor{keywordflow}{if}(N\ >\ 1)\ (*sequence)[1]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00059}00059\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 2;\ i\ <\ N;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00060}00060\ \ \ \ \ (*sequence)[i]\ =\ (*sequence)[i-\/1]\ +\ (*sequence)[i-\/2];}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00061}00061\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00075}\mbox{\hyperlink{590_lab3_8cpp_ac80f73d5b7416fd9fcb93a068838c4e1}{00075}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{590_lab3_8cpp_ac80f73d5b7416fd9fcb93a068838c4e1}{factorial}}(\textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ *result)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00076}00076\ \ \ \textcolor{comment}{//\ to\ do}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00077}00077\ \ \ \textcolor{comment}{//\ task\ 2\ step\ 1:\ Print\ the\ fibonacdi\ sequence\ upto\ digit\ n}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00078}00078\ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00079}00079\ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ 0\ ||\ n\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00080}00080\ \ \ \ \ *result\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00082}00082\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00083}00083\ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00084}00084\ \ \ *result\ =\ n\ *\ \mbox{\hyperlink{590_lab3_8cpp_ac80f73d5b7416fd9fcb93a068838c4e1}{factorial}}(n\ -\/\ 1,\ result);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00085}00085\ \ \ \textcolor{keywordflow}{return}\ *result;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00107}\mbox{\hyperlink{590_lab3_8cpp_af43f39ae06db924f83df6523a2bd92c9}{00107}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_af43f39ae06db924f83df6523a2bd92c9}{initArray}}(\mbox{\hyperlink{struct_dynamic_array}{DynamicArray}}\ *arr,\ \textcolor{keywordtype}{int}\ initialCapacity)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00108}00108\ \ \ \textcolor{comment}{//\ Allocate\ memory\ for\ initialCapacity\ integers.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00109}00109\ \ \ \textcolor{comment}{//\ Set\ the\ array’s\ size\ to\ 0.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00110}00110\ \ \ \textcolor{comment}{//\ Set\ the\ array’s\ capacity\ to\ the\ value\ of\ initialCapacity.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00111}00111\ \ \ \textcolor{comment}{//\ If\ memory\ allocation\ fails,\ print\ an\ error\ message\ to\ the\ Serial\ Monitor\ and\ exit\ the\ function.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00112}00112\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_a439227feff9d7f55384e8780cfc2eb82}{size}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00113}00113\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_adbe66a087ac3fd4a5b0566f64ca2d12b}{capacity}}\ =\ initialCapacity;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00114}00114\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}\ =\ (\textcolor{keywordtype}{int}\ *)\ malloc(\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})\ *\ initialCapacity);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00116}00116\ \ \ \textcolor{keywordflow}{if}(arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Initialization\ of\ Array\ failed.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00118}00118\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00131}\mbox{\hyperlink{590_lab3_8cpp_a68406c3105b30484589792cf7ede6b52}{00131}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a68406c3105b30484589792cf7ede6b52}{addElement}}(\mbox{\hyperlink{struct_dynamic_array}{DynamicArray}}\ *arr,\ \textcolor{keywordtype}{int}\ element)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00132}00132\ \ \ \textcolor{comment}{//\ Before\ inserting,\ check\ if\ the\ array\ has\ reached\ its\ capacity.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00133}00133\ \ \ \textcolor{comment}{//\ If\ so,\ reallocate\ memory\ to\ double\ the\ current\ capacity\ and\ update\ the\ internal\ capacity\ value.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00134}00134\ \ \ \textcolor{comment}{//\ After\ ensuring\ space\ is\ available,\ insert\ the\ new\ value\ at\ the\ current\ size\ index.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00135}00135\ \ \ \textcolor{comment}{//\ Increment\ the\ size\ field.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00136}00136\ \ \ \textcolor{keywordflow}{if}(arr-\/>\mbox{\hyperlink{struct_dynamic_array_a439227feff9d7f55384e8780cfc2eb82}{size}}\ >\ arr-\/>\mbox{\hyperlink{struct_dynamic_array_adbe66a087ac3fd4a5b0566f64ca2d12b}{capacity}}\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00137}00137\ \ \ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}\ =\ (\textcolor{keywordtype}{int}\ *)\ realloc(arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}},\ arr-\/>\mbox{\hyperlink{struct_dynamic_array_adbe66a087ac3fd4a5b0566f64ca2d12b}{capacity}}\ *\ 2\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{if}(arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00139}00139\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Increasing\ Capacity\ failed.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00140}00140\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00141}00141\ \ \ \ \ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_adbe66a087ac3fd4a5b0566f64ca2d12b}{capacity}}\ =\ arr-\/>\mbox{\hyperlink{struct_dynamic_array_adbe66a087ac3fd4a5b0566f64ca2d12b}{capacity}}\ *\ 2;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00142}00142\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00143}00143\ \ \ \ \ \ \ \textcolor{comment}{//printing\ \ out\ new\ capacity\ and\ size}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00144}00144\ \ \ \ \ \ \ \textcolor{comment}{//\ printString("{}Resizing\ Array...\ New\ capacity\ is:\ "{});}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00145}00145\ \ \ \ \ \ \ \textcolor{comment}{//\ printInt(arr-\/>capacity);}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00146}00146\ \ \ \ \ \ \ \textcolor{comment}{//\ printString("{}.\ Size\ needed\ is\ at\ least:\ "{});}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00147}00147\ \ \ \ \ \ \ \textcolor{comment}{//\ printInt(arr-\/>size\ +\ 1);}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00148}00148\ \ \ \ \ \ \ \textcolor{comment}{//\ printString("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00150}00150\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00152}00152\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}[arr-\/>\mbox{\hyperlink{struct_dynamic_array_a439227feff9d7f55384e8780cfc2eb82}{size}}]\ =\ element;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00153}00153\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_a439227feff9d7f55384e8780cfc2eb82}{size}}++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00154}00154\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}addElement:\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00155}00155\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(element);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00156}00156\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00168}\mbox{\hyperlink{590_lab3_8cpp_ad9359e6769c3880d369b91b3f3cae303}{00168}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_ad9359e6769c3880d369b91b3f3cae303}{printArray}}(\mbox{\hyperlink{struct_dynamic_array}{DynamicArray}}\ *arr)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00169}00169\ \ \ \textcolor{comment}{//\ Loop\ through\ the\ array\ and\ print\ each\ integer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00170}00170\ \ \ \textcolor{comment}{//\ Separate\ values\ using\ commas\ or\ tabs.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00171}00171\ \ \ \textcolor{comment}{//\ Print\ a\ newline\ character\ after\ the\ last\ value\ for\ formatting.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00172}00172\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}["{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00173}00173\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ arr-\/>\mbox{\hyperlink{struct_dynamic_array_a439227feff9d7f55384e8780cfc2eb82}{size}}\ -\/\ 1;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00174}00174\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}[i]);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00175}00175\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{},\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00176}00176\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00177}00177\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}[arr-\/>\mbox{\hyperlink{struct_dynamic_array_a439227feff9d7f55384e8780cfc2eb82}{size}}-\/1]);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00178}00178\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}]\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00189}\mbox{\hyperlink{590_lab3_8cpp_a250c39fe964b6e69dd99e691382480b6}{00189}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a250c39fe964b6e69dd99e691382480b6}{freeArray}}(\mbox{\hyperlink{struct_dynamic_array}{DynamicArray}}\ *arr)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00190}00190\ \ \ free(arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00191}00191\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_ac103627c1ad15cbec2f22d0abe6d54b6}{data}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00192}00192\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_a439227feff9d7f55384e8780cfc2eb82}{size}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00193}00193\ \ \ arr-\/>\mbox{\hyperlink{struct_dynamic_array_adbe66a087ac3fd4a5b0566f64ca2d12b}{capacity}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00194}00194\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00218}\mbox{\hyperlink{590_lab3_8cpp_a8fddfdc5cec1d8650dc3ac4ba932eb61}{00218}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{590_lab3_8cpp_a8fddfdc5cec1d8650dc3ac4ba932eb61}{pointer\_distance}}(\textcolor{keywordtype}{int}\ *ptr1,\ \textcolor{keywordtype}{int}\ *ptr2,\ \textcolor{keywordtype}{int}\ *array\_start,\ \textcolor{keywordtype}{int}\ *array\_end)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00219}00219\ \ \ \textcolor{comment}{//\ complete\ the\ function}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00220}00220\ \ \ \textcolor{keywordflow}{if}(array\_start\ <=\ ptr1\ \&\&\ array\_end\ >\ ptr1\ \&\&\ array\_end\ >\ ptr2\ \&\&\ array\_start\ <=\ ptr2)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00221}00221\ \ \ \ \ \textcolor{keywordflow}{return}\ (ptr2\ -\/\ ptr1);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00222}00222\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00223}00223\ \ \ \textcolor{keywordflow}{return}\ INT\_MAX;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00224}00224\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00234}\mbox{\hyperlink{590_lab3_8cpp_a453451e148f8458753e20954fb0427df}{00234}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a453451e148f8458753e20954fb0427df}{mem\_copy}}(\textcolor{keywordtype}{void}\ *dest,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *src,\ \textcolor{keywordtype}{size\_t}\ n)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00235}00235\ \ \ \textcolor{comment}{//\ complete\ the\ function}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00236}00236\ \ \ \textcolor{keywordflow}{if}\ (n\ <=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00238}00238\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00240}00240\ \ \ \textcolor{keywordtype}{char}\ *d\ =\ (\textcolor{keywordtype}{char}\ *)dest;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00241}00241\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *s\ =\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *)src;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00242}00242\ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00243}00243\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ n;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00244}00244\ \ \ \ \ d[i]\ =\ s[i];}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00245}00245\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00246}00246\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00258}\mbox{\hyperlink{590_lab3_8cpp_ae6ddee90069a7c44cef2d9084f81bfde}{00258}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{590_lab3_8cpp_ae6ddee90069a7c44cef2d9084f81bfde}{array\_modify}}(\textcolor{keywordtype}{int}\ *arr,\ \textcolor{keywordtype}{size\_t}\ len,\ \textcolor{keywordtype}{int}\ (*mod\_func)(\textcolor{keywordtype}{int}))\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00259}00259\ \ \ \textcolor{comment}{//\ complete\ the\ function}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00260}00260\ \ \ \textcolor{keywordflow}{if}(arr\ ==\ NULL\ ||\ mod\_func\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00261}00261\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00262}00262\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00264}00264\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ len;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00265}00265\ \ \ \ \ arr[i]\ =\ mod\_func(arr[i]);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00266}00266\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00267}00267\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00277}\mbox{\hyperlink{590_lab3_8cpp_a65c78ae0150a2d9bfc377f6a8c2d1b38}{00277}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a65c78ae0150a2d9bfc377f6a8c2d1b38}{print\_static\_array}}(\textcolor{keywordtype}{int}\ *arr,\ \textcolor{keywordtype}{size\_t}\ len)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00278}00278\ \ \ \textcolor{keywordflow}{if}(len\ <\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00280}00280\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}["{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00281}00281\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ len\ -\/\ 1;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00282}00282\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(arr[i]);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00283}00283\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{},\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00284}00284\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00286}00286\ \ \ \textcolor{keywordflow}{if}(len\ >\ 0)\ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(arr[len-\/1]);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00287}00287\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}]\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00288}00288\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00299}\mbox{\hyperlink{590_lab3_8cpp_a226b065de5075e62c78bbb96d42ca796}{00299}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{590_lab3_8cpp_a226b065de5075e62c78bbb96d42ca796}{str\_to\_int}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00300}00300\ \ \ \textcolor{keywordflow}{if}(str\ ==\ NULL)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00301}00301\ \ \ \textcolor{keywordtype}{bool}\ isNeg\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00303}00303\ \ \ \textcolor{keywordflow}{if}(str[0]\ ==\ \textcolor{charliteral}{'-\/'})\ isNeg\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00305}00305\ \ \ \textcolor{keywordtype}{int}\ currNum\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00306}00306\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ strlen(str);\ i++)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00307}00307\ \ \ \ \ \textcolor{keywordflow}{if}(isNeg\ \&\&\ i\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00308}00308\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(str[i]\ <\ 48\ ||\ str[i]\ >\ 58)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00310}00310\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00311}00311\ \ \ \ \ \ \ currNum\ =\ currNum\ *\ 10\ +\ (str[i]\ -\/\ 48);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00312}00312\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00313}00313\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(!isNeg\ \&\&\ i\ >=0)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00314}00314\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(str[i]\ <\ 48\ ||\ str[i]\ >\ 58)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00316}00316\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00317}00317\ \ \ \ \ \ \ currNum\ =\ currNum\ *\ 10\ +\ (str[i]\ -\/\ 48);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00318}00318\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00319}00319\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00320}00320\ \ \ \textcolor{keywordflow}{return}\ isNeg\ ?\ -\/1\ *\ currNum\ :\ currNum;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00321}00321\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00333}\mbox{\hyperlink{590_lab3_8cpp_a7009294e49a033ef10cdd86d3114e0fb}{00333}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a7009294e49a033ef10cdd86d3114e0fb}{print\_truth\_table}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *b)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00334}00334\ \ \ \textcolor{keywordtype}{int}\ binary\_a\ =\ \mbox{\hyperlink{590_lab3_8cpp_a226b065de5075e62c78bbb96d42ca796}{str\_to\_int}}(a);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00335}00335\ \ \ \textcolor{keywordtype}{int}\ binary\_b\ =\ \mbox{\hyperlink{590_lab3_8cpp_a226b065de5075e62c78bbb96d42ca796}{str\_to\_int}}(b);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00337}00337\ \ \ \textcolor{comment}{//\ Print\ table\ header\ using\ Special590functions}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00338}00338\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)nTruth\ Table\ for\ Bitwise\ Operations\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00339}00339\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00340}00340\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Index\(\backslash\)tA\(\backslash\)tB\(\backslash\)tA\ AND\ B\(\backslash\)tA\ OR\ B\(\backslash\)tA\ XOR\ B\(\backslash\)tNOT\ A\(\backslash\)tNOT\ B\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00341}00341\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00343}00343\ \ \ \textcolor{comment}{//\ Loop\ through\ each\ bit\ position\ (up\ to\ 16\ bits)}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00344}00344\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <=\ 15;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00345}00345\ \ \ \ \ \textcolor{keywordflow}{if}((binary\_a\ >>\ i)\ >\ 0\ ||\ \ (binary\_b\ >>\ i)\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00346}00346\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\_A\ =\ (binary\_a\ >>\ i)\ \&\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00347}00347\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\_B\ =\ (binary\_b\ >>\ i)\ \&\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00348}00348\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\_and\ =\ bit\_A\ \&\ bit\_B;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00349}00349\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\_xor\ =\ bit\_A\ \string^\ bit\_B;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00350}00350\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\_or\ =\ bit\_A\ |\ bit\_B;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00351}00351\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\_not\_A\ =\ (\string~binary\_a\ >>\ i)\ \&\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00352}00352\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ bit\_not\_B\ =\ (\string~binary\_b\ >>\ i)\ \&\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00354}00354\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(i);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00355}00355\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00356}00356\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(bit\_A);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00357}00357\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00358}00358\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(bit\_B);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00359}00359\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00360}00360\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(bit\_and);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00361}00361\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00362}00362\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(bit\_or);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00363}00363\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00364}00364\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(bit\_xor);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00365}00365\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00366}00366\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(bit\_not\_A);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00367}00367\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00368}00368\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(bit\_not\_B);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00369}00369\ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00370}00370\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00371}00371\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00372}00372\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00373}00373\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00390}\mbox{\hyperlink{590_lab3_8cpp_adbbf07da72c3e7b8ebb4d29740e19c9f}{00390}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_adbbf07da72c3e7b8ebb4d29740e19c9f}{reverseString}}(\textcolor{keywordtype}{char}\ *str)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00391}00391\ \ \ \textcolor{comment}{//To\ Do:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00393}00393\ \ \ \textcolor{comment}{//\ Set\ a\ pointer\ or\ index\ to\ the\ beginning\ of\ the\ string.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00394}00394\ \ \ \textcolor{comment}{//\ Set\ another\ pointer/index\ to\ the\ end\ of\ the\ string\ (just\ before\ the\ null\ terminator).}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00395}00395\ \ \ \textcolor{comment}{//\ Swap\ characters\ at\ the\ two\ ends.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00396}00396\ \ \ \textcolor{comment}{//\ Move\ both\ pointers\ toward\ the\ center.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00397}00397\ \ \ \textcolor{comment}{//\ Repeat\ until\ the\ pointers\ meet\ or\ cross.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00398}00398\ \ \ \textcolor{keywordtype}{char}\ *\ ptr\_beg;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00399}00399\ \ \ \textcolor{keywordtype}{char}\ *\ ptr\_end;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00400}00400\ \ \ \textcolor{keywordtype}{char}\ temp;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00402}00402\ \ \ ptr\_beg\ =\ str;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00403}00403\ \ \ ptr\_end\ =\ str\ +\ strlen(str)\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00405}00405\ \ \ \textcolor{keywordflow}{while}\ (ptr\_beg\ <\ ptr\_end)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00406}00406\ \ \ \ \ temp\ =\ *ptr\_beg;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00407}00407\ \ \ \ \ *ptr\_beg\ =\ *ptr\_end;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00408}00408\ \ \ \ \ *ptr\_end\ =\ temp;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00410}00410\ \ \ \ \ ptr\_beg++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00411}00411\ \ \ \ \ ptr\_end-\/-\/;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00412}00412\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00413}00413\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00422}\mbox{\hyperlink{590_lab3_8cpp_a0e98f292adc3de5680b8c87e0aabf7b1}{00422}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a0e98f292adc3de5680b8c87e0aabf7b1}{initBuffer}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}},\ \textcolor{keywordtype}{size\_t}\ size)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00423}00423\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer\ =\ (\textcolor{keywordtype}{int}\ *)malloc(size\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00424}00424\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00425}00425\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00426}00426\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00427}00427\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size\ =\ size;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00428}00428\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00436}\mbox{\hyperlink{590_lab3_8cpp_acc9c49fef89cd6c91570acaa3fe4367e}{00436}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_acc9c49fef89cd6c91570acaa3fe4367e}{freeBuffer}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00437}00437\ \ \ free(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00438}00438\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00439}00439\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00440}00440\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00441}00441\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00442}00442\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00443}00443\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00444}00444\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00453}\mbox{\hyperlink{590_lab3_8cpp_a65254c2cddaccc21e8f177cd44458b7b}{00453}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{590_lab3_8cpp_a65254c2cddaccc21e8f177cd44458b7b}{isFull}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00454}00454\ \ \ \textcolor{comment}{//\ Return\ true\ if\ size\ equals\ capacity.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00455}00455\ \ \ \textcolor{comment}{//\ Return\ false\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00456}00456\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count\ ==\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00457}00457\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00458}00458\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00467}\mbox{\hyperlink{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd}{00467}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd}{isEmpty}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00468}00468\ \ \ \textcolor{comment}{//\ Return\ true\ if\ size\ is\ zero.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00469}00469\ \ \ \textcolor{comment}{//\ Return\ false\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00470}00470\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count\ ==\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00471}00471\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00472}00472\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00480}\mbox{\hyperlink{590_lab3_8cpp_ae9da2f9d7676953b0620a1fa39002f5d}{00480}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_ae9da2f9d7676953b0620a1fa39002f5d}{writeBuffer}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}},\ \textcolor{keywordtype}{int}\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00481}00481\ \ \ \textcolor{comment}{//If\ the\ buffer\ is\ full,\ do\ not\ write.\ Throw\ an\ error.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00482}00482\ \ \ \textcolor{comment}{//\ Otherwise:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00483}00483\ \ \ \textcolor{comment}{//\ Write\ value\ at\ head.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00484}00484\ \ \ \textcolor{comment}{//\ Advance\ head\ (wrap\ if\ needed).}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00485}00485\ \ \ \textcolor{comment}{//\ Increment\ size\ of\ the\ buffer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00486}00486\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{590_lab3_8cpp_a65254c2cddaccc21e8f177cd44458b7b}{isFull}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}))\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00487}00487\ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer[\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00488}00488\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head\ ==\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00489}00489\ \ \ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00490}00490\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00491}00491\ \ \ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00492}00492\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00493}00493\ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00494}00494\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00495}00495\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Write:\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00496}00496\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(value);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00497}00497\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00498}00498\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00499}00499\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Buffer\ is\ Full.\ Unable\ to\ write\ more.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00500}00500\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00501}00501\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00511}\mbox{\hyperlink{590_lab3_8cpp_a7a5abf3da6033eaeca8899bc37465950}{00511}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{590_lab3_8cpp_a7a5abf3da6033eaeca8899bc37465950}{readBuffer}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00512}00512\ \ \ \textcolor{comment}{//\ If\ buffer\ is\ empty,\ return\ -\/1.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00513}00513\ \ \ \textcolor{comment}{//\ Otherwise:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00514}00514\ \ \ \textcolor{comment}{//\ Read\ value\ at\ tail.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00515}00515\ \ \ \textcolor{comment}{//\ Return\ value.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00516}00516\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd}{isEmpty}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}))\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00517}00517\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Read\ -\/>\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00518}00518\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer[\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail]);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00519}00519\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00520}00520\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer[\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail];}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00521}00521\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00531}\mbox{\hyperlink{590_lab3_8cpp_a0bbb5ddb5ef455668d0ec985b5179e3f}{00531}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{590_lab3_8cpp_a0bbb5ddb5ef455668d0ec985b5179e3f}{popBuffer}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00532}00532\ \ \ \textcolor{comment}{//\ If\ buffer\ is\ empty,\ return\ -\/1.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00533}00533\ \ \ \textcolor{comment}{//\ Read\ value\ at\ tail.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00534}00534\ \ \ \textcolor{comment}{//\ Advance\ tail,\ reduce\ size.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00535}00535\ \ \ \textcolor{comment}{//\ Return\ value.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00536}00536\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd}{isEmpty}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}))\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00537}00537\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Pop\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00538}00538\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(-\/1);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00539}00539\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00540}00540\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00541}00541\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00542}00542\ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00543}00543\ \ \ \textcolor{keywordtype}{int}\ value\ =\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer[\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail];}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00544}00544\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ ==\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00545}00545\ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00546}00546\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00547}00547\ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00548}00548\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00549}00549\ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00550}00550\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count-\/-\/;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00552}00552\ \ \ \textcolor{comment}{//Documentation}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00553}00553\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Pop\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00554}00554\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(value);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00555}00555\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}.\ Tail\ at:\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00556}00556\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00557}00557\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00558}00558\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00559}00559\ \ \ \textcolor{comment}{//return}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00560}00560\ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00561}00561\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00562}00562\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00570}\mbox{\hyperlink{590_lab3_8cpp_a01d237bb4346ae8d4eb5beb15cd95d3f}{00570}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a01d237bb4346ae8d4eb5beb15cd95d3f}{pushBuffer}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}},\ \textcolor{keywordtype}{int}\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00571}00571\ \ \ \textcolor{comment}{//\ If\ buffer\ is\ full:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00572}00572\ \ \ \textcolor{comment}{//\ Overwrite\ at\ tail\ and\ advance\ tail.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00573}00573\ \ \ \textcolor{comment}{//\ Write\ at\ head.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00574}00574\ \ \ \textcolor{comment}{//\ Advance\ head.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00575}00575\ \ \ \textcolor{comment}{//\ If\ not\ full,\ increment\ size.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00576}00576\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Push\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00577}00577\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(value);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00578}00578\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00580}00580\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{590_lab3_8cpp_a65254c2cddaccc21e8f177cd44458b7b}{isFull}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}))\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00581}00581\ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00582}00582\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00583}00583\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Overwrote\ Tail.\ Was\ full.\ Initial\ at\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00584}00584\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00585}00585\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}.\ Tail\ is\ now\ at\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00586}00586\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ ==\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00587}00587\ \ \ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00588}00588\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00589}00589\ \ \ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00590}00590\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00591}00591\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00592}00592\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00593}00593\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00594}00594\ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00595}00595\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Head\ rewritten\ at\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00596}00596\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00597}00597\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}.\ New\ Head\ at\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00598}00598\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer[\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00599}00599\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head\ ==\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00600}00600\ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00601}00601\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00602}00602\ \ \ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head++;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00603}00603\ \ \ \}\ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00604}00604\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00605}00605\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00606}00606\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00607}00607\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00615}\mbox{\hyperlink{590_lab3_8cpp_a23d9abf649cc5746bfab52c36a4bd942}{00615}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_a23d9abf649cc5746bfab52c36a4bd942}{resizeBuffer}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}},\ \textcolor{keywordtype}{size\_t}\ new\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00616}00616\ \ \ \textcolor{comment}{//\ Allocate\ a\ new\ array\ with\ the\ new\ capacity.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00617}00617\ \ \ \textcolor{comment}{//\ Copy\ the\ old\ values\ (in\ correct\ FIFO\ order)\ into\ the\ new\ buffer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00618}00618\ \ \ \textcolor{comment}{//\ Free\ the\ old\ buffer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00619}00619\ \ \ \textcolor{comment}{//\ Update\ buffer\ pointers\ and\ capacity.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00620}00620\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}Attempting\ resize\ from\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00621}00621\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00622}00622\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\ to\ "{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00623}00623\ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(new\_size);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00624}00624\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00625}00625\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00626}00626\ \ \ \textcolor{keywordflow}{if}(new\_size\ <\ cb-\/>max\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00627}00627\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{stringliteral}{"{}New\ size\ cannot\ be\ smaller\ than\ the\ old\ size.\ Keeping\ things\ the\ same.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00628}00628\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00629}00629\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00630}00630\ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00631}00631\ \ \ \textcolor{keywordtype}{int}*\ buffer2\ =\ (\textcolor{keywordtype}{int}\ *)malloc(new\_size\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00632}00632\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00633}00633\ \ \ \ \ buffer2[i]\ =\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer[(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ +\ i)\ \%\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size];}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00634}00634\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00635}00635\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00636}00636\ \ \ free(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00637}00637\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>buffer\ =\ buffer2;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00638}00638\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>head\ =\ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>count;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00639}00639\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>tail\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00640}00640\ \ \ \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}-\/>max\_size\ =\ new\_size;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00641}00641\ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00642}00642\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00646}00646\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00657}\mbox{\hyperlink{590_lab3_8cpp_ac02f21c596378e21045dcafa6fba7a5e}{00657}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{590_lab3_8cpp_ac02f21c596378e21045dcafa6fba7a5e}{simulateSensorData}}(\mbox{\hyperlink{struct_circular_buffer}{CircularBuffer}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}},\ \mbox{\hyperlink{struct_dynamic_array}{DynamicArray}}\ *\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a86d7a774b3345cdf6d03f35f77ed17ae}{processedData}})\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00658}00658\ \ \ \textcolor{comment}{//This\ function\ prototype\ is\ predefined.\ You\ are\ allowed\ to\ modify\ the\ function\ as\ needed.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00659}00659\ \ \ \textcolor{comment}{//Note\ that\ the\ functionality\ of\ this\ task\ is\ implemented\ in\ the\ loop\ function.\ }}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00660}00660\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00661}00661\ \ \ \textcolor{keyword}{static}\ uint32\_t\ AVG\_timer\ =\ 0;\ \textcolor{comment}{//basic\ timer}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00662}00662\ \ \ \textcolor{keyword}{static}\ uint32\_t\ LEDR\_timer\ =\ 0;\ \textcolor{comment}{//basic\ timer}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00663}00663\ \ \ uint32\_t\ curr\_time\ =\ *(\textcolor{keyword}{volatile}\ uint32\_t\ *)\ TIMG\_T0LO\_REG(0);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00664}00664\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00665}00665\ \ \ \textcolor{comment}{//\ 2.\ Inside\ the\ main\ loop:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00666}00666\ \ \ \textcolor{comment}{//\ \ \ \ a.\ Check\ if\ 500\ milliseconds\ have\ passed\ since\ the\ last\ sample:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00667}00667\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ -\/\ If\ yes:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00668}00668\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Read\ the\ current\ value\ from\ the\ LDR\ sensor.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00669}00669\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Store\ this\ value\ into\ the\ circular\ buffer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00670}00670\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Reset\ the\ 500\ ms\ timer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00671}00671\ \ \ \textcolor{keywordflow}{if}(curr\_time\ -\/\ LEDR\_timer\ >\ 1000000/2)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00672}00672\ \ \ \ \ \mbox{\hyperlink{590_lab3_8cpp_ae9da2f9d7676953b0620a1fa39002f5d}{writeBuffer}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}},\ analogRead(\mbox{\hyperlink{590_lab3_8cpp_a988efc1db523aab3ae92974b199e9599}{LEDR}}));}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00673}00673\ \ \ \ \ LEDR\_timer\ =\ curr\_time;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00674}00674\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00675}00675\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00676}00676\ \ \ \textcolor{comment}{//\ \ \ \ b.\ Check\ if\ 2.5\ seconds\ have\ passed\ since\ the\ last\ average:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00677}00677\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ -\/\ If\ yes:}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00678}00678\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Compute\ the\ average\ of\ the\ values\ currently\ in\ the\ circular\ buffer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00679}00679\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Store\ this\ average\ in\ the\ dynamic\ array.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00680}00680\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Print\ the\ contents\ of\ the\ dynamic\ array\ to\ the\ serial\ monitor.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00681}00681\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Clear\ the\ Circular\ buffer\ }}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00682}00682\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ •\ Reset\ the\ 2500\ ms\ timer.}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00683}00683\ \ \ \textcolor{keywordflow}{if}(curr\_time\ -\/\ AVG\_timer\ >\ 1000000\ *\ 5\ /\ 2)\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00684}00684\ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00685}00685\ \ \ \ \ \textcolor{keywordflow}{while}(!\mbox{\hyperlink{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd}{isEmpty}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}))\ \{}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00686}00686\ \ \ \ \ \ \ i\ +=\ \mbox{\hyperlink{590_lab3_8cpp_a0bbb5ddb5ef455668d0ec985b5179e3f}{popBuffer}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00687}00687\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00688}00688\ \ \ \ \ i\ /=\ 5;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00689}00689\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00690}00690\ \ \ \ \ \textcolor{comment}{//\ printString("{}Current\ avg\ circular\ buffer:\ "{});}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00691}00691\ \ \ \ \ \textcolor{comment}{//\ printInt(i);}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00692}00692\ \ \ \ \ \textcolor{comment}{//\ printString("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00693}00693\ }
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00694}00694\ \ \ \ \ \mbox{\hyperlink{590_lab3_8cpp_a68406c3105b30484589792cf7ede6b52}{addElement}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a86d7a774b3345cdf6d03f35f77ed17ae}{processedData}},\ i);}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00695}00695\ \ \ \ \ \mbox{\hyperlink{590_lab3_8cpp_ad9359e6769c3880d369b91b3f3cae303}{printArray}}(\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a86d7a774b3345cdf6d03f35f77ed17ae}{processedData}});}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00696}00696\ \ \ \ \ AVG\_timer\ =\ curr\_time;}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00697}00697\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{590_lab3_8cpp_source_l00698}00698\ \}}
+
+\end{DoxyCode}

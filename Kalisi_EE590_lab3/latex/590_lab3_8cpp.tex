@@ -1,0 +1,670 @@
+\doxysection{590Lab3.\+cpp File Reference}
+\hypertarget{590_lab3_8cpp}{}\label{590_lab3_8cpp}\index{590Lab3.cpp@{590Lab3.cpp}}
+{\ttfamily \#include "{}590\+Lab3.\+h"{}}\newline
+{\ttfamily \#include "{}Special590functions.\+h"{}}\newline
+{\ttfamily \#include "{}Arduino.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}soc/timer\+\_\+group\+\_\+reg.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{590_lab3_8cpp_a988efc1db523aab3ae92974b199e9599}{LEDR}}~10
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{590_lab3_8cpp_ac02f21c596378e21045dcafa6fba7a5e}{simulate\+Sensor\+Data}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}, \mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a86d7a774b3345cdf6d03f35f77ed17ae}{processed\+Data}})
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 6\+: Buffer Operations (NOT USED) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Task 2}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a1a4d114a9f512dafadeacca6e7bec93e}{fibonacci}} (int N, unsigned long long \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}sequence)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 2.\+1\+: Fibonacci Sequence. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{590_lab3_8cpp_ac80f73d5b7416fd9fcb93a068838c4e1}{factorial}} (int n, unsigned long long \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 2.\+2\+: Factorial Calculation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Task 3}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{590_lab3_8cpp_af43f39ae06db924f83df6523a2bd92c9}{init\+Array}} (\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}arr, int initial\+Capacity)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 3.\+1\+: Initialize Dynamic Array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a68406c3105b30484589792cf7ede6b52}{add\+Element}} (\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}arr, int element)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 3.\+2\+: Add Element to Dynamic Array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_ad9359e6769c3880d369b91b3f3cae303}{print\+Array}} (\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}arr)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 3.\+3\+: Print Dynamic Array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a250c39fe964b6e69dd99e691382480b6}{free\+Array}} (\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}arr)
+\begin{DoxyCompactList}\small\item\em COMPLETED SAMPLE FUNCTION Free Dynamic Array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Task 4}\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{590_lab3_8cpp_a8fddfdc5cec1d8650dc3ac4ba932eb61}{pointer\+\_\+distance}} (int \texorpdfstring{$\ast$}{*}ptr1, int \texorpdfstring{$\ast$}{*}ptr2, int \texorpdfstring{$\ast$}{*}array\+\_\+start, int \texorpdfstring{$\ast$}{*}array\+\_\+end)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 4.\+1\+: Pointer Distance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a453451e148f8458753e20954fb0427df}{mem\+\_\+copy}} (void \texorpdfstring{$\ast$}{*}dest, const void \texorpdfstring{$\ast$}{*}src, size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 4.\+2\+: Memory Copy. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{590_lab3_8cpp_ae6ddee90069a7c44cef2d9084f81bfde}{array\+\_\+modify}} (int \texorpdfstring{$\ast$}{*}arr, size\+\_\+t len, int(\texorpdfstring{$\ast$}{*}mod\+\_\+func)(int))
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 4.\+3\+: Array Modify. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a65c78ae0150a2d9bfc377f6a8c2d1b38}{print\+\_\+static\+\_\+array}} (int \texorpdfstring{$\ast$}{*}arr, size\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em Helper function 4.\+2-\/4.\+3\+: print\+\_\+static\+\_\+array. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{590_lab3_8cpp_a226b065de5075e62c78bbb96d42ca796}{str\+\_\+to\+\_\+int}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 4.\+4\+: String Array. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a7009294e49a033ef10cdd86d3114e0fb}{print\+\_\+truth\+\_\+table}} (const char \texorpdfstring{$\ast$}{*}a, const char \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 4.\+5\+: Print Truth Table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Task 5}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{590_lab3_8cpp_adbbf07da72c3e7b8ebb4d29740e19c9f}{reverse\+String}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+1\+: String Manipulation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a0e98f292adc3de5680b8c87e0aabf7b1}{init\+Buffer}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_acc9c49fef89cd6c91570acaa3fe4367e}{free\+Buffer}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{590_lab3_8cpp_a65254c2cddaccc21e8f177cd44458b7b}{is\+Full}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd}{is\+Empty}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_ae9da2f9d7676953b0620a1fa39002f5d}{write\+Buffer}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}, int value)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{590_lab3_8cpp_a7a5abf3da6033eaeca8899bc37465950}{read\+Buffer}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{590_lab3_8cpp_a0bbb5ddb5ef455668d0ec985b5179e3f}{pop\+Buffer}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}})
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a01d237bb4346ae8d4eb5beb15cd95d3f}{push\+Buffer}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}, int value)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{590_lab3_8cpp_a23d9abf649cc5746bfab52c36a4bd942}{resize\+Buffer}} (\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}, size\+\_\+t new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{590_lab3_8cpp_a988efc1db523aab3ae92974b199e9599}\index{590Lab3.cpp@{590Lab3.cpp}!LEDR@{LEDR}}
+\index{LEDR@{LEDR}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{LEDR}{LEDR}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a988efc1db523aab3ae92974b199e9599} 
+\#define LEDR~10}
+
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{590_lab3_8cpp_a68406c3105b30484589792cf7ede6b52}\index{590Lab3.cpp@{590Lab3.cpp}!addElement@{addElement}}
+\index{addElement@{addElement}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{addElement()}{addElement()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a68406c3105b30484589792cf7ede6b52} 
+void add\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}}]{arr}{, }\item[{int}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 3.\+2\+: Add Element to Dynamic Array. 
+
+Name\+: add\+Element
+
+Observed Behavior\+: Adds an element to the array; resizes if needed. Commented Purpose\+: Demonstrates array growth logic. Edge Case Handling\+: Handles capacity overflow. Error Handling\+: Memory errors should be caught and reported. 
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array to which an additional element needs to be added \\
+\hline
+{\em element} & Element which needs to be added \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_ae6ddee90069a7c44cef2d9084f81bfde}\index{590Lab3.cpp@{590Lab3.cpp}!array\_modify@{array\_modify}}
+\index{array\_modify@{array\_modify}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{array\_modify()}{array\_modify()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_ae6ddee90069a7c44cef2d9084f81bfde} 
+int array\+\_\+modify (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{arr}{, }\item[{size\+\_\+t}]{len}{, }\item[{int(\texorpdfstring{$\ast$}{*}}]{mod\+\_\+func~}{)(int)}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 4.\+3\+: Array Modify. 
+
+Name\+: array\+\_\+modify
+
+Modifies each element of the array using a function pointer. 
+\begin{DoxyParams}{Parameters}
+{\em arr} & pointer to static (non dynamic) array to modify \\
+\hline
+{\em len} & length of array \\
+\hline
+{\em mod\+\_\+func} & function pointer which points to the function to apply to each element \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & if invalid inputs \\
+\hline
+{\em 0} & if successfully modified array \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00258}{258}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_ac80f73d5b7416fd9fcb93a068838c4e1}\index{590Lab3.cpp@{590Lab3.cpp}!factorial@{factorial}}
+\index{factorial@{factorial}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{factorial()}{factorial()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_ac80f73d5b7416fd9fcb93a068838c4e1} 
+int factorial (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{unsigned long long \texorpdfstring{$\ast$}{*}}]{result}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 2.\+2\+: Factorial Calculation. 
+
+Name\+: factorial
+
+Observed Behavior\+: Computes the factorial of a given non-\/negative integer. Commented Purpose\+: Basic recursion/iteration exercise for mathematical operations. Edge Case Handling\+: For n = 0, result is 1. Error Handling\+: Returns -\/1 for negative input. 
+\begin{DoxyParams}{Parameters}
+{\em n} & number for which a factorial is taken \\
+\hline
+{\em result} & address of the unsigned long long which holds the fibonacci result \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & if n \texorpdfstring{$<$}{<} 0 \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a1a4d114a9f512dafadeacca6e7bec93e}\index{590Lab3.cpp@{590Lab3.cpp}!fibonacci@{fibonacci}}
+\index{fibonacci@{fibonacci}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{fibonacci()}{fibonacci()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a1a4d114a9f512dafadeacca6e7bec93e} 
+void fibonacci (\begin{DoxyParamCaption}\item[{int}]{N}{, }\item[{unsigned long long \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{sequence}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 2.\+1\+: Fibonacci Sequence. 
+
+Name\+: fibonacci
+
+Observed Behavior\+: Generates a Fibonacci sequence of length N and stores it in a dynamic array. Commented Purpose\+: Illustrates recursive or iterative numerical computation. Edge Case Handling\+: Exit early if N \texorpdfstring{$<$}{<}= 0. Error Handling\+: Assumes memory is properly allocated for sequence. 
+\begin{DoxyParams}{Parameters}
+{\em N} & length of the fibonacci series. \\
+\hline
+{\em sequence} & address of the pointer provided, which holds the fibonacci series. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a250c39fe964b6e69dd99e691382480b6}\index{590Lab3.cpp@{590Lab3.cpp}!freeArray@{freeArray}}
+\index{freeArray@{freeArray}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{freeArray()}{freeArray()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a250c39fe964b6e69dd99e691382480b6} 
+void free\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}}]{arr}{}\end{DoxyParamCaption})}
+
+
+
+COMPLETED SAMPLE FUNCTION Free Dynamic Array. 
+
+Name\+: free\+Array
+
+Observed Behavior\+: Frees memory and resets array fields. Commented Purpose\+: Demonstrates cleanup of dynamic structures. Edge Case Handling\+: Can be safely called multiple times. 
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array to which an additional element needs to be printed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_acc9c49fef89cd6c91570acaa3fe4367e}\index{590Lab3.cpp@{590Lab3.cpp}!freeBuffer@{freeBuffer}}
+\index{freeBuffer@{freeBuffer}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{freeBuffer()}{freeBuffer()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_acc9c49fef89cd6c91570acaa3fe4367e} 
+void free\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: free\+Buffer
+
+COMPLETED SAMPLE FUNCTION. frees buffer, sets pointer to NULL, sets all integers to 0. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer to be freed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00436}{436}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_af43f39ae06db924f83df6523a2bd92c9}\index{590Lab3.cpp@{590Lab3.cpp}!initArray@{initArray}}
+\index{initArray@{initArray}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{initArray()}{initArray()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_af43f39ae06db924f83df6523a2bd92c9} 
+void init\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}}]{arr}{, }\item[{int}]{initial\+Capacity}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 3.\+1\+: Initialize Dynamic Array. 
+
+Name\+: init\+Array
+
+Observed Behavior\+: Initializes a dynamic integer array with specified capacity. Commented Purpose\+: Teaches dynamic memory allocation. Edge Case Handling\+: Ensures zero-\/size start is not allowed. Error Handling\+: Returns on malloc failure. 
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array to be initialized \\
+\hline
+{\em initial\+Capacity} & Capacity for which the array memory needs to be initialized. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00107}{107}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a0e98f292adc3de5680b8c87e0aabf7b1}\index{590Lab3.cpp@{590Lab3.cpp}!initBuffer@{initBuffer}}
+\index{initBuffer@{initBuffer}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{initBuffer()}{initBuffer()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a0e98f292adc3de5680b8c87e0aabf7b1} 
+void init\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: init\+Buffer
+
+COMPLETED SAMPLE FUNCTION. Mallocs buffer, sets up head, tail, count and max size 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer to be initialized. \\
+\hline
+{\em size} & size of which to initialize the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00422}{422}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd}\index{590Lab3.cpp@{590Lab3.cpp}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a39f9eeca3cac2781c49fcede276bdbbd} 
+bool is\+Empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: is\+Empty
+
+Checks if buffer is empty. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & if buffer count is 0. \\
+\hline
+{\em false} & if buffer count is not 0. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00467}{467}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a65254c2cddaccc21e8f177cd44458b7b}\index{590Lab3.cpp@{590Lab3.cpp}!isFull@{isFull}}
+\index{isFull@{isFull}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{isFull()}{isFull()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a65254c2cddaccc21e8f177cd44458b7b} 
+bool is\+Full (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: is\+Full
+
+Checks if buffer is full. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & if buffer count is same as max size. \\
+\hline
+{\em false} & if buffer count is not the same as max size. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00453}{453}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a453451e148f8458753e20954fb0427df}\index{590Lab3.cpp@{590Lab3.cpp}!mem\_copy@{mem\_copy}}
+\index{mem\_copy@{mem\_copy}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{mem\_copy()}{mem\_copy()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a453451e148f8458753e20954fb0427df} 
+void mem\+\_\+copy (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dest}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{src}{, }\item[{size\+\_\+t}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 4.\+2\+: Memory Copy. 
+
+Name\+: mem\+\_\+copy
+
+Copies {\ttfamily n} bytes from {\ttfamily src} to {\ttfamily dest}. 
+\begin{DoxyParams}{Parameters}
+{\em dest} & pointer to destination \\
+\hline
+{\em src} & pointer to source \\
+\hline
+{\em n} & number of bytes to copy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00234}{234}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a8fddfdc5cec1d8650dc3ac4ba932eb61}\index{590Lab3.cpp@{590Lab3.cpp}!pointer\_distance@{pointer\_distance}}
+\index{pointer\_distance@{pointer\_distance}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{pointer\_distance()}{pointer\_distance()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a8fddfdc5cec1d8650dc3ac4ba932eb61} 
+int pointer\+\_\+distance (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{ptr1}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{ptr2}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{array\+\_\+start}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{array\+\_\+end}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 4.\+1\+: Pointer Distance. 
+
+Name\+: pointer\+\_\+distance
+
+Calculates the number of elements between two pointers within the same array. Commented Purpose\+: Demonstrates cleanup of dynamic structures. Edge Case Handling\+: Can be safely called multiple times. 
+\begin{DoxyParams}{Parameters}
+{\em ptr1} & first pointer to compare. \\
+\hline
+{\em ptr2} & second pointers to compare. \\
+\hline
+{\em array\+\_\+start} & beginning of the array. \\
+\hline
+{\em array\+\_\+end} & ending bounds of the array. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em INT\+\_\+\+MAX} & if out of bounds. \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyReturn}{Returns}
+integer distance. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00218}{218}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a0bbb5ddb5ef455668d0ec985b5179e3f}\index{590Lab3.cpp@{590Lab3.cpp}!popBuffer@{popBuffer}}
+\index{popBuffer@{popBuffer}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{popBuffer()}{popBuffer()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a0bbb5ddb5ef455668d0ec985b5179e3f} 
+int pop\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: pop\+Buffer
+
+Returns value at tail. increments tail, wraps tail around if past max size. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & if empty. \\
+\hline
+{\em value} & at tail. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00531}{531}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a65c78ae0150a2d9bfc377f6a8c2d1b38}\index{590Lab3.cpp@{590Lab3.cpp}!print\_static\_array@{print\_static\_array}}
+\index{print\_static\_array@{print\_static\_array}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_static\_array()}{print\_static\_array()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a65c78ae0150a2d9bfc377f6a8c2d1b38} 
+void print\+\_\+static\+\_\+array (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{arr}{, }\item[{size\+\_\+t}]{len}{}\end{DoxyParamCaption})}
+
+
+
+Helper function 4.\+2-\/4.\+3\+: print\+\_\+static\+\_\+array. 
+
+Name\+: print\+\_\+static\+\_\+array
+
+Prints "{}len"{} values from the array pointed to by \textquotesingle{}arr\textquotesingle{} 
+\begin{DoxyParams}{Parameters}
+{\em arr} & pointer to array to print \\
+\hline
+{\em len} & length of array \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00277}{277}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a7009294e49a033ef10cdd86d3114e0fb}\index{590Lab3.cpp@{590Lab3.cpp}!print\_truth\_table@{print\_truth\_table}}
+\index{print\_truth\_table@{print\_truth\_table}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_truth\_table()}{print\_truth\_table()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a7009294e49a033ef10cdd86d3114e0fb} 
+void print\+\_\+truth\+\_\+table (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 4.\+5\+: Print Truth Table. 
+
+Name\+: print\+\_\+truth\+\_\+table
+
+Observed Behavior\+: Computes and displays a truth table from two binary strings. Commented Purpose\+: Explains bitwise operations and string parsing. Edge Case Handling\+: Limits output to 16 bits max. Function to print the truth table for bitwise operations 
+\begin{DoxyParams}{Parameters}
+{\em a} & pointer to string which contains only numbers \\
+\hline
+{\em b} & pointer to string which contains only numbers \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00333}{333}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_ad9359e6769c3880d369b91b3f3cae303}\index{590Lab3.cpp@{590Lab3.cpp}!printArray@{printArray}}
+\index{printArray@{printArray}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{printArray()}{printArray()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_ad9359e6769c3880d369b91b3f3cae303} 
+void print\+Array (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}}]{arr}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 3.\+3\+: Print Dynamic Array. 
+
+Name\+: print\+Array
+
+Observed Behavior\+: Prints each element of the array to the serial monitor. Commented Purpose\+: Provides output visibility of internal data. Edge Case Handling\+: Prints only "{}\mbox{[}$\,$\mbox{]}"{} if empty. Error Handling\+: Assumes array is initialized. 
+\begin{DoxyParams}{Parameters}
+{\em arr} & Dynamic Array to which an additional element needs to be printed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a01d237bb4346ae8d4eb5beb15cd95d3f}\index{590Lab3.cpp@{590Lab3.cpp}!pushBuffer@{pushBuffer}}
+\index{pushBuffer@{pushBuffer}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{pushBuffer()}{pushBuffer()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a01d237bb4346ae8d4eb5beb15cd95d3f} 
+void push\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{, }\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: push\+Buffer
+
+adds value at head. Increments head. If tail is ahead of head, increment tail as well. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer. \\
+\hline
+{\em value} & value to be pushed to the buffer. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00570}{570}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a7a5abf3da6033eaeca8899bc37465950}\index{590Lab3.cpp@{590Lab3.cpp}!readBuffer@{readBuffer}}
+\index{readBuffer@{readBuffer}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{readBuffer()}{readBuffer()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a7a5abf3da6033eaeca8899bc37465950} 
+int read\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: read\+Buffer
+
+Returns value at tail. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & if empty. \\
+\hline
+{\em value} & at tail. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00511}{511}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a23d9abf649cc5746bfab52c36a4bd942}\index{590Lab3.cpp@{590Lab3.cpp}!resizeBuffer@{resizeBuffer}}
+\index{resizeBuffer@{resizeBuffer}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{resizeBuffer()}{resizeBuffer()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a23d9abf649cc5746bfab52c36a4bd942} 
+void resize\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{, }\item[{size\+\_\+t}]{new\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: resize\+Buffer
+
+resizes buffer, keeping FIFO order 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer. \\
+\hline
+{\em new\+\_\+size} & Size that is larger than the original size of the cb. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00615}{615}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_adbbf07da72c3e7b8ebb4d29740e19c9f}\index{590Lab3.cpp@{590Lab3.cpp}!reverseString@{reverseString}}
+\index{reverseString@{reverseString}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{reverseString()}{reverseString()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_adbbf07da72c3e7b8ebb4d29740e19c9f} 
+void reverse\+String (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+1\+: String Manipulation. 
+
+Name\+: reverse\+String
+
+Reverses a null-\/terminated string provided in place. 
+\begin{DoxyParams}{Parameters}
+{\em str} & pointer to string which will be reversed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00390}{390}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_ac02f21c596378e21045dcafa6fba7a5e}\index{590Lab3.cpp@{590Lab3.cpp}!simulateSensorData@{simulateSensorData}}
+\index{simulateSensorData@{simulateSensorData}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{simulateSensorData()}{simulateSensorData()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_ac02f21c596378e21045dcafa6fba7a5e} 
+void simulate\+Sensor\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{, }\item[{\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \texorpdfstring{$\ast$}{*}}]{processed\+Data}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 6\+: Buffer Operations (NOT USED) 
+
+Name\+: simulate\+Sensor\+Data
+
+Observed Behavior\+: Reads LDR sensor values at 2 Hz and computes averaged brightness at 1 Hz. Commented Purpose\+: Integrates sensor input, buffer management, and real-\/time processing. Edge Case Handling\+: Ensures LED brightness updates only on valid data. Error Handling\+: Assumes circular buffer and dynamic array are initialized. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer. \\
+\hline
+{\em processed\+Data} & pointer to Dynamic Array. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00657}{657}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_a226b065de5075e62c78bbb96d42ca796}\index{590Lab3.cpp@{590Lab3.cpp}!str\_to\_int@{str\_to\_int}}
+\index{str\_to\_int@{str\_to\_int}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{str\_to\_int()}{str\_to\_int()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_a226b065de5075e62c78bbb96d42ca796} 
+int str\+\_\+to\+\_\+int (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 4.\+4\+: String Array. 
+
+Name\+: str\+\_\+to\+\_\+int
+
+Converts a string representing a positive unsigned integer into its numeric equivalent String representing a positive unsigned integer into its numeric equivalent 
+\begin{DoxyParams}{Parameters}
+{\em str} & pointer to string \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/1} & if error \\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyReturn}{Returns}
+integer equivalent of the string 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00299}{299}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+
+\Hypertarget{590_lab3_8cpp_ae9da2f9d7676953b0620a1fa39002f5d}\index{590Lab3.cpp@{590Lab3.cpp}!writeBuffer@{writeBuffer}}
+\index{writeBuffer@{writeBuffer}!590Lab3.cpp@{590Lab3.cpp}}
+\doxysubsubsection{\texorpdfstring{writeBuffer()}{writeBuffer()}}
+{\footnotesize\ttfamily \label{590_lab3_8cpp_ae9da2f9d7676953b0620a1fa39002f5d} 
+void write\+Buffer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \texorpdfstring{$\ast$}{*}}]{cb}{, }\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Demo \doxylink{struct_task}{Task} 5.\+2\+: Circular Buffer. 
+
+Name\+: write\+Buffer
+
+Writes a value to buffer if not full. Else throws an error. 
+\begin{DoxyParams}{Parameters}
+{\em cb} & pointer to circular buffer to be written to. \\
+\hline
+{\em value} & value to be written. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{590_lab3_8cpp_source_l00480}{480}} of file \mbox{\hyperlink{590_lab3_8cpp_source}{590\+Lab3.\+cpp}}.
+

@@ -1,0 +1,507 @@
+\doxysection{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino File Reference}
+\hypertarget{_kalisi___e_e590__lab3_8ino}{}\label{_kalisi___e_e590__lab3_8ino}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+{\ttfamily \#include "{}590\+Lab3.\+h"{}}\newline
+{\ttfamily \#include "{}Special590functions.\+h"{}}\newline
+{\ttfamily \#include "{}driver/gpio.\+h"{}}\newline
+{\ttfamily \#include "{}soc/io\+\_\+mux\+\_\+reg.\+h"{}}\newline
+{\ttfamily \#include "{}soc/gpio\+\_\+reg.\+h"{}}\newline
+{\ttfamily \#include "{}soc/gpio\+\_\+periph.\+h"{}}\newline
+{\ttfamily \#include "{}soc/timer\+\_\+group\+\_\+reg.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a1d51567e0f6916e91f5bd3719d56cce6}{INITIAL\+\_\+\+BUFFER\+\_\+\+SIZE}}~5
+\begin{DoxyCompactList}\small\item\em Buffer size initial for testing \doxylink{struct_task}{Task} 3. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a0e67bd1151155345f2c80bd9835573e1}{FIB\+\_\+\+SIZE}}~10
+\begin{DoxyCompactList}\small\item\em N elements of the Fibonacci Series to find. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a819cb4266ce718854a0191c2389b7072}{FACT\+\_\+\+VAL}}~10
+\begin{DoxyCompactList}\small\item\em Value for which the Factorial needs to be found. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a9253f3e2148bef241e53597e917d3016}{TIME\+\_\+\+DIV}}~80
+\begin{DoxyCompactList}\small\item\em dividing the 80Mhz to 1Mhz. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_accb619222552bdc4fc8590cb57068b2e}{TIME\+\_\+\+EN}}~(1$<$$<$31)
+\begin{DoxyCompactList}\small\item\em enabling timer. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a2868e403a58438f7bc768902620f0b3b}{TIME\+\_\+\+INCREMENT\+\_\+\+MODE}}~(1$<$$<$30)
+\begin{DoxyCompactList}\small\item\em choosing to increment timer instead of decrement. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a698c124f1c293f98840449d6c5b9d984}{COUNT}}~1000000
+\begin{DoxyCompactList}\small\item\em num cycles to count to, which is equivalent to 1 second. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585}{LED}}~1
+\begin{DoxyCompactList}\small\item\em LED output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{Indent}\textbf{ Lab Test Functions}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_afb35a54f26606b4808ac0a8d9ad55433}{task2}} ()
+\begin{DoxyCompactList}\small\item\em A function to run required Fibonacci and Factorial Test Cases. Also details how much memory each task takes up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_ace729e6ad571671db31c448c87b2331b}{task3}} ()
+\begin{DoxyCompactList}\small\item\em A function to run required Dynamic Array Test Cases. Also details how much memory the task takes up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a8057551d0ffc4554d710bd56d6ce5e05}{task5}} ()
+\begin{DoxyCompactList}\small\item\em A function to run required Reverse String and Circular Buffer Test Cases. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a139a20c03c45136580317f52430bc046}{task4}} ()
+\begin{DoxyCompactList}\small\item\em A function to run required Pointer Operations Test Cases, and prints out truth table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Testing Helper Functions}\par
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a6f713147f24e08e05198b8f1bc6660c9}{double\+\_\+value}} (int x)
+\begin{DoxyCompactList}\small\item\em Doubles input integer and returns a new integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_adb8dba1e150ccf420750c04f759bacc5}{mult\+\_\+3}} (int x)
+\begin{DoxyCompactList}\small\item\em Triples input integer and returns a new integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a65b3669eb2cdf42b1cff1a5f4a1e5270}{subtract\+\_\+ten}} (int x)
+\begin{DoxyCompactList}\small\item\em Subtracts 10 from the integer provided and returns a new integer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a736536269ee779cf2ee64060fc5ce92f}{add\+\_\+1}} (int x)
+\begin{DoxyCompactList}\small\item\em adds 1 to the integer provided and returns a new integer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a56b4501518cbef2085d35bde3a286f41}{test\+Pointer\+Operations}} ()
+\begin{DoxyCompactList}\small\item\em Testing for \doxylink{struct_task}{Task} 4, checks all functions involved. Tests all functions, not just ones looked at in the demo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_ac38f1a963c4494ff939bad764b01b127}{test\+Reverse}} ()
+\begin{DoxyCompactList}\small\item\em Testing reverse function for task 5. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a465641b138b4768759544c3d23299d68}{test\+Circular\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Testing circular buffer functions for task 5. Tests all functions, not just those looked at in the demo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Main Function Components}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_aaedac22c55880495505bf375e0e132c1}{start\+\_\+timer}} ()
+\begin{DoxyCompactList}\small\item\em Setting up timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em sets up all pins, timers and arrays to be used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em loop to be run repeatedly. Equivalent to running everything in main whith a while(1). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a1bbe43bed5326c42e17bf45301aaeeaf}{LED\+\_\+timer}}
+\begin{DoxyCompactList}\small\item\em Timer which represents how long it has been since LED has changed/been outputted to. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a26ae286c8f1470d907f0f5fa97d82154}{BACKGROUND\+\_\+timer}}
+\begin{DoxyCompactList}\small\item\em Timer which represents how long it has been since the background tasks were called. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_a86d7a774b3345cdf6d03f35f77ed17ae}{processed\+Data}}
+\begin{DoxyCompactList}\small\item\em process\+Data holds a growing dynamic array that stores a list of average brightnesses \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}{cb}}
+\begin{DoxyCompactList}\small\item\em cb is a Circular buffer, meant to be at size 5, holds LEDR brightness values \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_ae03814659eae4bd435358035b55af207}{cb\+\_\+t5}}
+\begin{DoxyCompactList}\small\item\em cb\+\_\+t5 is a circular buffer used to test \doxylink{struct_task}{Task} 5. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a698c124f1c293f98840449d6c5b9d984}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!COUNT@{COUNT}}
+\index{COUNT@{COUNT}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{COUNT}{COUNT}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a698c124f1c293f98840449d6c5b9d984} 
+\#define COUNT~1000000}
+
+
+
+num cycles to count to, which is equivalent to 1 second. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00051}{51}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a819cb4266ce718854a0191c2389b7072}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!FACT\_VAL@{FACT\_VAL}}
+\index{FACT\_VAL@{FACT\_VAL}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{FACT\_VAL}{FACT\_VAL}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a819cb4266ce718854a0191c2389b7072} 
+\#define FACT\+\_\+\+VAL~10}
+
+
+
+Value for which the Factorial needs to be found. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00046}{46}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a0e67bd1151155345f2c80bd9835573e1}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!FIB\_SIZE@{FIB\_SIZE}}
+\index{FIB\_SIZE@{FIB\_SIZE}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{FIB\_SIZE}{FIB\_SIZE}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a0e67bd1151155345f2c80bd9835573e1} 
+\#define FIB\+\_\+\+SIZE~10}
+
+
+
+N elements of the Fibonacci Series to find. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00045}{45}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a1d51567e0f6916e91f5bd3719d56cce6}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!INITIAL\_BUFFER\_SIZE@{INITIAL\_BUFFER\_SIZE}}
+\index{INITIAL\_BUFFER\_SIZE@{INITIAL\_BUFFER\_SIZE}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{INITIAL\_BUFFER\_SIZE}{INITIAL\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a1d51567e0f6916e91f5bd3719d56cce6} 
+\#define INITIAL\+\_\+\+BUFFER\+\_\+\+SIZE~5}
+
+
+
+Buffer size initial for testing \doxylink{struct_task}{Task} 3. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00044}{44}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!LED@{LED}}
+\index{LED@{LED}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{LED}{LED}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585} 
+\#define LED~1}
+
+
+
+LED output. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00053}{53}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a9253f3e2148bef241e53597e917d3016}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!TIME\_DIV@{TIME\_DIV}}
+\index{TIME\_DIV@{TIME\_DIV}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{TIME\_DIV}{TIME\_DIV}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a9253f3e2148bef241e53597e917d3016} 
+\#define TIME\+\_\+\+DIV~80}
+
+
+
+dividing the 80Mhz to 1Mhz. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00048}{48}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_accb619222552bdc4fc8590cb57068b2e}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!TIME\_EN@{TIME\_EN}}
+\index{TIME\_EN@{TIME\_EN}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{TIME\_EN}{TIME\_EN}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_accb619222552bdc4fc8590cb57068b2e} 
+\#define TIME\+\_\+\+EN~(1$<$$<$31)}
+
+
+
+enabling timer. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00049}{49}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a2868e403a58438f7bc768902620f0b3b}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!TIME\_INCREMENT\_MODE@{TIME\_INCREMENT\_MODE}}
+\index{TIME\_INCREMENT\_MODE@{TIME\_INCREMENT\_MODE}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{TIME\_INCREMENT\_MODE}{TIME\_INCREMENT\_MODE}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a2868e403a58438f7bc768902620f0b3b} 
+\#define TIME\+\_\+\+INCREMENT\+\_\+\+MODE~(1$<$$<$30)}
+
+
+
+choosing to increment timer instead of decrement. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00050}{50}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a736536269ee779cf2ee64060fc5ce92f}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!add\_1@{add\_1}}
+\index{add\_1@{add\_1}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{add\_1()}{add\_1()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a736536269ee779cf2ee64060fc5ce92f} 
+int add\+\_\+1 (\begin{DoxyParamCaption}\item[{int}]{x}{}\end{DoxyParamCaption})}
+
+
+
+adds 1 to the integer provided and returns a new integer. 
+
+Name\+: add\+\_\+1 
+\begin{DoxyParams}{Parameters}
+{\em x} & is any integer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+x + 1 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00273}{273}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a6f713147f24e08e05198b8f1bc6660c9}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!double\_value@{double\_value}}
+\index{double\_value@{double\_value}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{double\_value()}{double\_value()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a6f713147f24e08e05198b8f1bc6660c9} 
+int double\+\_\+value (\begin{DoxyParamCaption}\item[{int}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Doubles input integer and returns a new integer. 
+
+Name\+: double\+\_\+value 
+\begin{DoxyParams}{Parameters}
+{\em x} & is any integer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+2x. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00243}{243}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_afe461d27b9c48d5921c00d521181f12f}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!loop@{loop}}
+\index{loop@{loop}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+loop to be run repeatedly. Equivalent to running everything in main whith a while(1). 
+
+Name\+: loop
+
+Updates timers and reads analog input from LEDR pin. checks if timers of 500ms, 2.\+5s, 1s, and 10s are triggered. expected outcomes are detailed further 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00513}{513}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_adb8dba1e150ccf420750c04f759bacc5}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!mult\_3@{mult\_3}}
+\index{mult\_3@{mult\_3}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{mult\_3()}{mult\_3()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_adb8dba1e150ccf420750c04f759bacc5} 
+int mult\+\_\+3 (\begin{DoxyParamCaption}\item[{int}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Triples input integer and returns a new integer. 
+
+Name\+: mult\+\_\+3 
+\begin{DoxyParams}{Parameters}
+{\em x} & is any integer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+3x 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00253}{253}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!setup@{setup}}
+\index{setup@{setup}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+sets up all pins, timers and arrays to be used. 
+
+Name\+: setup
+
+Serial Monitor is begun at 9600 baud Tasks 2-\/5 are run. During testing, test\+Pointer\+Operations, test\+Reverse, and test\+Circular\+Buffer are run as well. Pin LED is enabled as GPIO, marked as an output and instantiated to 0. Timers are configured. All timers are initialized. LEDC is attached 10 100Hz and 11 precision. 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00477}{477}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_aaedac22c55880495505bf375e0e132c1}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!start\_timer@{start\_timer}}
+\index{start\_timer@{start\_timer}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{start\_timer()}{start\_timer()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_aaedac22c55880495505bf375e0e132c1} 
+void start\+\_\+timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Setting up timer. 
+
+Name\+: start\+\_\+timer
+
+Sets up a timer, expected 10Mhz timer. 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00461}{461}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a65b3669eb2cdf42b1cff1a5f4a1e5270}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!subtract\_ten@{subtract\_ten}}
+\index{subtract\_ten@{subtract\_ten}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{subtract\_ten()}{subtract\_ten()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a65b3669eb2cdf42b1cff1a5f4a1e5270} 
+int subtract\+\_\+ten (\begin{DoxyParamCaption}\item[{int}]{x}{}\end{DoxyParamCaption})}
+
+
+
+Subtracts 10 from the integer provided and returns a new integer. 
+
+Name\+: subtract\+\_\+ten 
+\begin{DoxyParams}{Parameters}
+{\em x} & any integer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+x -\/ 10 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00263}{263}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_afb35a54f26606b4808ac0a8d9ad55433}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!task2@{task2}}
+\index{task2@{task2}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{task2()}{task2()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_afb35a54f26606b4808ac0a8d9ad55433} 
+void task2 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+A function to run required Fibonacci and Factorial Test Cases. Also details how much memory each task takes up. 
+
+Name\+: task2 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00077}{77}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_ace729e6ad571671db31c448c87b2331b}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!task3@{task3}}
+\index{task3@{task3}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{task3()}{task3()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_ace729e6ad571671db31c448c87b2331b} 
+void task3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+A function to run required Dynamic Array Test Cases. Also details how much memory the task takes up. 
+
+Name\+: task3 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00120}{120}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a139a20c03c45136580317f52430bc046}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!task4@{task4}}
+\index{task4@{task4}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{task4()}{task4()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a139a20c03c45136580317f52430bc046} 
+void task4 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+A function to run required Pointer Operations Test Cases, and prints out truth table. 
+
+Name\+: task4 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00197}{197}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a8057551d0ffc4554d710bd56d6ce5e05}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!task5@{task5}}
+\index{task5@{task5}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{task5()}{task5()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a8057551d0ffc4554d710bd56d6ce5e05} 
+void task5 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+A function to run required Reverse String and Circular Buffer Test Cases. 
+
+Name\+: task5 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00163}{163}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a465641b138b4768759544c3d23299d68}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!testCircularBuffer@{testCircularBuffer}}
+\index{testCircularBuffer@{testCircularBuffer}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{testCircularBuffer()}{testCircularBuffer()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a465641b138b4768759544c3d23299d68} 
+void test\+Circular\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Testing circular buffer functions for task 5. Tests all functions, not just those looked at in the demo. 
+
+Name\+: test\+Circular\+Buffer 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00365}{365}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a56b4501518cbef2085d35bde3a286f41}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!testPointerOperations@{testPointerOperations}}
+\index{testPointerOperations@{testPointerOperations}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{testPointerOperations()}{testPointerOperations()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a56b4501518cbef2085d35bde3a286f41} 
+void test\+Pointer\+Operations (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Testing for \doxylink{struct_task}{Task} 4, checks all functions involved. Tests all functions, not just ones looked at in the demo. 
+
+Name\+: test\+Pointer\+Operations 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00282}{282}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_ac38f1a963c4494ff939bad764b01b127}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!testReverse@{testReverse}}
+\index{testReverse@{testReverse}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{testReverse()}{testReverse()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_ac38f1a963c4494ff939bad764b01b127} 
+void test\+Reverse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Testing reverse function for task 5. 
+
+Name\+: test\+Reverse 
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00346}{346}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a26ae286c8f1470d907f0f5fa97d82154}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!BACKGROUND\_timer@{BACKGROUND\_timer}}
+\index{BACKGROUND\_timer@{BACKGROUND\_timer}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{BACKGROUND\_timer}{BACKGROUND\_timer}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a26ae286c8f1470d907f0f5fa97d82154} 
+uint32\+\_\+t BACKGROUND\+\_\+timer}
+
+
+
+Timer which represents how long it has been since the background tasks were called. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00060}{60}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!cb@{cb}}
+\index{cb@{cb}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{cb}{cb}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_af2244e6f64e8e2edf3cc821e1474f916} 
+\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} cb}
+
+
+
+cb is a Circular buffer, meant to be at size 5, holds LEDR brightness values 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00062}{62}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_ae03814659eae4bd435358035b55af207}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!cb\_t5@{cb\_t5}}
+\index{cb\_t5@{cb\_t5}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{cb\_t5}{cb\_t5}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_ae03814659eae4bd435358035b55af207} 
+\mbox{\hyperlink{struct_circular_buffer}{Circular\+Buffer}} cb\+\_\+t5}
+
+
+
+cb\+\_\+t5 is a circular buffer used to test \doxylink{struct_task}{Task} 5. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00063}{63}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a1bbe43bed5326c42e17bf45301aaeeaf}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!LED\_timer@{LED\_timer}}
+\index{LED\_timer@{LED\_timer}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{LED\_timer}{LED\_timer}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a1bbe43bed5326c42e17bf45301aaeeaf} 
+uint32\+\_\+t LED\+\_\+timer}
+
+
+
+Timer which represents how long it has been since LED has changed/been outputted to. 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00058}{58}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+
+\Hypertarget{_kalisi___e_e590__lab3_8ino_a86d7a774b3345cdf6d03f35f77ed17ae}\index{Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}!processedData@{processedData}}
+\index{processedData@{processedData}!Kalisi\_EE590\_lab3.ino@{Kalisi\_EE590\_lab3.ino}}
+\doxysubsubsection{\texorpdfstring{processedData}{processedData}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590__lab3_8ino_a86d7a774b3345cdf6d03f35f77ed17ae} 
+\mbox{\hyperlink{struct_dynamic_array}{Dynamic\+Array}} processed\+Data}
+
+
+
+process\+Data holds a growing dynamic array that stores a list of average brightnesses 
+
+
+
+Definition at line \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source_l00061}{61}} of file \mbox{\hyperlink{_kalisi___e_e590__lab3_8ino_source}{Kalisi\+\_\+\+EE590\+\_\+lab3.\+ino}}.
+

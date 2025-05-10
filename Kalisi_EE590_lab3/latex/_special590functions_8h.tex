@@ -1,0 +1,100 @@
+\doxysection{Special590functions.\+h File Reference}
+\hypertarget{_special590functions_8h}{}\label{_special590functions_8h}\index{Special590functions.h@{Special590functions.h}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_special590functions_8h_ac93a5582b733d3f902a4d47513e1cfdb}{print\+Char}} (const char \texorpdfstring{$\ast$}{*}c)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_task}{Task} 1 step 1\+: Print Char pointed to by c. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_special590functions_8h_abe6d5621640c26d89a09be56928cd923}{print\+String}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_task}{Task} 1 step 2\+: Print str. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_special590functions_8h_a7b2a37f712fc07c780289d627f9c7833}{print\+Float}} (float value)
+\begin{DoxyCompactList}\small\item\em \doxylink{struct_task}{Task} 1 step 3\+: Print str. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_special590functions_8h_a747894d2d32f14c3b1e3f4dd3ffefeb2}{print\+Int}} (int num)
+\begin{DoxyCompactList}\small\item\em Helper function I created to print ints faster. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_special590functions_8h_ac93a5582b733d3f902a4d47513e1cfdb}\index{Special590functions.h@{Special590functions.h}!printChar@{printChar}}
+\index{printChar@{printChar}!Special590functions.h@{Special590functions.h}}
+\doxysubsubsection{\texorpdfstring{printChar()}{printChar()}}
+{\footnotesize\ttfamily \label{_special590functions_8h_ac93a5582b733d3f902a4d47513e1cfdb} 
+void print\+Char (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{c}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{struct_task}{Task} 1 step 1\+: Print Char pointed to by c. 
+
+Name\+: print\+Char
+
+prints character to the serial pointed to by c. 
+\begin{DoxyParams}{Parameters}
+{\em c} & pointer pointing to a character to be printed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_special590functions_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_special590functions_8cpp_source}{Special590functions.\+cpp}}.
+
+\Hypertarget{_special590functions_8h_a7b2a37f712fc07c780289d627f9c7833}\index{Special590functions.h@{Special590functions.h}!printFloat@{printFloat}}
+\index{printFloat@{printFloat}!Special590functions.h@{Special590functions.h}}
+\doxysubsubsection{\texorpdfstring{printFloat()}{printFloat()}}
+{\footnotesize\ttfamily \label{_special590functions_8h_a7b2a37f712fc07c780289d627f9c7833} 
+void print\+Float (\begin{DoxyParamCaption}\item[{float}]{f}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{struct_task}{Task} 1 step 3\+: Print str. 
+
+Name\+: print\+Float
+
+prints all characters in a float until teh 2nd decimal place. 
+\begin{DoxyParams}{Parameters}
+{\em f} & float to be printed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_special590functions_8cpp_source_l00085}{85}} of file \mbox{\hyperlink{_special590functions_8cpp_source}{Special590functions.\+cpp}}.
+
+\Hypertarget{_special590functions_8h_a747894d2d32f14c3b1e3f4dd3ffefeb2}\index{Special590functions.h@{Special590functions.h}!printInt@{printInt}}
+\index{printInt@{printInt}!Special590functions.h@{Special590functions.h}}
+\doxysubsubsection{\texorpdfstring{printInt()}{printInt()}}
+{\footnotesize\ttfamily \label{_special590functions_8h_a747894d2d32f14c3b1e3f4dd3ffefeb2} 
+void print\+Int (\begin{DoxyParamCaption}\item[{int}]{num}{}\end{DoxyParamCaption})}
+
+
+
+Helper function I created to print ints faster. 
+
+Name\+: print\+Int
+
+Prints all ints digit by digit. 
+\begin{DoxyParams}{Parameters}
+{\em num} & number to print. Assumes that all nums are valid numbers. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_special590functions_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{_special590functions_8cpp_source}{Special590functions.\+cpp}}.
+
+\Hypertarget{_special590functions_8h_abe6d5621640c26d89a09be56928cd923}\index{Special590functions.h@{Special590functions.h}!printString@{printString}}
+\index{printString@{printString}!Special590functions.h@{Special590functions.h}}
+\doxysubsubsection{\texorpdfstring{printString()}{printString()}}
+{\footnotesize\ttfamily \label{_special590functions_8h_abe6d5621640c26d89a09be56928cd923} 
+void print\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{struct_task}{Task} 1 step 2\+: Print str. 
+
+Name\+: print\+String
+
+prints all characters until a new line is detected. 
+\begin{DoxyParams}{Parameters}
+{\em str} & pointer pointing to a list of chars to be printed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_special590functions_8cpp_source_l00051}{51}} of file \mbox{\hyperlink{_special590functions_8cpp_source}{Special590functions.\+cpp}}.
+

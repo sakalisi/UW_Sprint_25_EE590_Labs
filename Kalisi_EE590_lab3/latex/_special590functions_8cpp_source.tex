@@ -1,0 +1,79 @@
+\doxysection{Special590functions.\+cpp}
+\hypertarget{_special590functions_8cpp_source}{}\label{_special590functions_8cpp_source}\mbox{\hyperlink{_special590functions_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00020}00020\ \textcolor{comment}{//\ ===========\ Libraries\ ===========}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_special590functions_8h}{Special590functions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00025}00025\ \textcolor{comment}{//\ ===========\ DEFINES\ ===========}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00027}\mbox{\hyperlink{_special590functions_8cpp_a6b20d41d6252e9871430c242cb1a56e7}{00027}}\ \textcolor{preprocessor}{\#define\ BUFFER\_SIZE\ 128\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ Define\ buffer\ size\ for\ all\ strings}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00029}00029\ \textcolor{comment}{//\ ===========\ GLOBALS\ ===========}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00030}\mbox{\hyperlink{_special590functions_8cpp_a1964074eb6691c0bb046715210e45329}{00030}}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{_special590functions_8cpp_a1964074eb6691c0bb046715210e45329}{stringBuffer}}[\mbox{\hyperlink{590_lab3_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}];\ \ \textcolor{comment}{//\ Declare\ a\ global\ buffer\ for\ strings}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00033}00033\ \textcolor{comment}{//\ ===========\ FUNCTIONS\ ===========}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00041}\mbox{\hyperlink{_special590functions_8cpp_ac93a5582b733d3f902a4d47513e1cfdb}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_special590functions_8cpp_ac93a5582b733d3f902a4d47513e1cfdb}{printChar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *c)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00042}00042\ \ \ Serial.print(*c);}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00051}\mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{00051}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00052}00052\ \ \ \textcolor{comment}{//task\ 1\ step\ 2}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00053}00053\ \ \ \textcolor{comment}{//\ This\ is\ a\ fully\ completed\ function\ for\ you\ to\ study.}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00055}00055\ \ \ \textcolor{comment}{//\ Iterate\ through\ the\ memory\ locations\ of\ the\ input\ string}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00056}00056\ \ \ \textcolor{keywordtype}{char}\ *dest\ =\ \mbox{\hyperlink{_special590functions_8cpp_a1964074eb6691c0bb046715210e45329}{stringBuffer}};\ \ \textcolor{comment}{//\ Pointer\ to\ the\ destination\ buffer}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00057}00057\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *src\ =\ str;\ \ \ \ \ \ \textcolor{comment}{//\ Pointer\ to\ the\ source\ string}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00059}00059\ \ \ \textcolor{comment}{//\ Copy\ characters\ from\ src\ to\ dest\ until\ null\ terminator\ or\ buffer\ limit}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00060}00060\ \ \ \textcolor{keywordflow}{while}\ (*src\ !=\ \textcolor{charliteral}{'\(\backslash\)0'}\ \&\&\ (dest\ -\/\ \mbox{\hyperlink{_special590functions_8cpp_a1964074eb6691c0bb046715210e45329}{stringBuffer}})\ <\ \mbox{\hyperlink{590_lab3_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00061}00061\ \ \ \ \ *dest\ =\ *src;\ \ \ \ \ \textcolor{comment}{//\ Copy\ character}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00062}00062\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_ac93a5582b733d3f902a4d47513e1cfdb}{printChar}}(dest);\ \ \textcolor{comment}{//\ Print\ the\ copied\ character}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{if}\ (*dest\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00064}00064\ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \textcolor{comment}{//\ Stop\ at\ newline\ character}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00066}00066\ \ \ \ \ src++;\ \ \ \textcolor{comment}{//\ Move\ source\ pointer\ to\ next\ character}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00067}00067\ \ \ \ \ dest++;\ \ \textcolor{comment}{//\ Move\ destination\ pointer\ to\ next\ position}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00068}00068\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00070}00070\ \ \ \textcolor{comment}{//\ Null\ terminate\ the\ buffer}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00071}00071\ \ \ *dest\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00073}00073\ \ \ \textcolor{comment}{//\ Reset\ the\ buffer\ (clear\ all\ data)}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00074}00074\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{590_lab3_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00075}00075\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a1964074eb6691c0bb046715210e45329}{stringBuffer}}[i]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00076}00076\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00085}\mbox{\hyperlink{_special590functions_8cpp_a3613f935b48ec2514c8f9a67aadcad23}{00085}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_special590functions_8cpp_a3613f935b48ec2514c8f9a67aadcad23}{printFloat}}(\textcolor{keywordtype}{float}\ f)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00086}00086\ \ \ \textcolor{comment}{//\ task\ 1\ step\ 3:\ Print\ the\ given\ float\ value\ 'f'}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00087}00087\ \ \ \textcolor{comment}{//\ 'f'\ can\ be\ upto\ 8\ digits\ long}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00088}00088\ \ \ \textcolor{comment}{//\ 'f'\ should\ always\ be\ printed\ out\ to\ 2\ decimal\ places}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00089}00089\ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00090}00090\ \ \ \textcolor{keywordtype}{char}\ buffer\ [8];}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00091}00091\ \ \ n\ =\ sprintf(buffer,\ \textcolor{stringliteral}{"{}\%0.2f"{}},\ f);}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00092}00092\ \ \ \mbox{\hyperlink{_special590functions_8cpp_abe6d5621640c26d89a09be56928cd923}{printString}}(buffer);}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00101}\mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{00101}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(\textcolor{keywordtype}{int}\ num)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//\ Handle\ negative\ numbers}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_ac93a5582b733d3f902a4d47513e1cfdb}{printChar}}(\textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ num\ =\ -\/num;}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ Convert\ integer\ to\ string\ using\ recursion}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ /\ 10\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_a747894d2d32f14c3b1e3f4dd3ffefeb2}{printInt}}(num\ /\ 10);\ \ \textcolor{comment}{//\ print\ leading\ digits}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{keywordtype}{char}\ digit\ =\ (num\ \%\ 10)\ +\ \textcolor{charliteral}{'0'};}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00114}00114\ \ \ \ \ \mbox{\hyperlink{_special590functions_8cpp_ac93a5582b733d3f902a4d47513e1cfdb}{printChar}}(\&digit);\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ print\ current\ digit}}
+\DoxyCodeLine{\Hypertarget{_special590functions_8cpp_source_l00115}00115\ \}}
+
+\end{DoxyCode}
