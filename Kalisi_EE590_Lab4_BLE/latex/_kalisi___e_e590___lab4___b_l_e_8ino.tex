@@ -1,0 +1,217 @@
+\doxysection{C\+:/\+Users/\+Jayanth Kalisi/\+Documents/\+Arduino/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+\_\+\+BLE/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+\_\+\+BLE.ino File Reference}
+\hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino}{}\label{_kalisi___e_e590___lab4___b_l_e_8ino}\index{C:/Users/Jayanth Kalisi/Documents/Arduino/Kalisi\_EE590\_Lab4\_BLE/Kalisi\_EE590\_Lab4\_BLE.ino@{C:/Users/Jayanth Kalisi/Documents/Arduino/Kalisi\_EE590\_Lab4\_BLE/Kalisi\_EE590\_Lab4\_BLE.ino}}
+{\ttfamily \#include $<$BLE2902.\+h$>$}\newline
+{\ttfamily \#include $<$BLEDevice.\+h$>$}\newline
+{\ttfamily \#include $<$BLEUtils.\+h$>$}\newline
+{\ttfamily \#include $<$BLEServer.\+h$>$}\newline
+{\ttfamily \#include "{}Wire.\+h"{}}\newline
+{\ttfamily \#include $<$Liquid\+Crystal\+\_\+\+I2\+C.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_my_callbacks}{My\+Callbacks}}
+\begin{DoxyCompactList}\small\item\em Callback from BLE if written, will set flag to true. Used as ISR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a445125ee8c34695376c85f10b38844d6}{SERVICE\+\_\+\+UUID}}~"{}abac6fe4-\/7fce-\/47a5-\/bc1b-\/85f92ecd786b"{}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Required for quick LCD handling \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a94aefdd5f54049079364e832dc15b336}{CHARACTERISTIC\+\_\+\+UUID}}~"{}d7b62563-\/544f-\/4e33-\/9251-\/f29577256ead"{}
+\begin{DoxyCompactList}\small\item\em Characteristic UUID. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_abc2ad14f0789907024ac765711ffd3da}{BUTTON\+\_\+\+PIN}}~13
+\begin{DoxyCompactList}\small\item\em Push Button Pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Liquid\+Crystal\+\_\+\+I2C \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}{lcd}} (0x27, 16, 2)
+\begin{DoxyCompactList}\small\item\em LCD Pre-\/initialization. \end{DoxyCompactList}\item 
+void IRAM\+\_\+\+ATTR \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_ada06ab1c4bbd307a9fea75726c8894f1}{on\+Timer}} ()
+\begin{DoxyCompactList}\small\item\em ISR to handle counter update on timer interrupt call. \end{DoxyCompactList}\item 
+void IRAM\+\_\+\+ATTR \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a3a08cf0cfb4242802b018cce6cc4d4f9}{on\+Button\+Press}} ()
+\begin{DoxyCompactList}\small\item\em ISR to handle button press flag setting on button interrupt call. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em sets up bluetooth, LCD, timer and button \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Equivalent to while (1) in main. Checks three things each time, if it needs to update, if it has been interrupted via BLE, or via Button Press. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+volatile bool \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_ac225b5d04ed848deaae5393d2ce5521e}{new\+Message\+Received}} = false
+\item 
+hw\+\_\+timer\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a97222eeccb5b18e1fc532806c1efcb34}{timer}} = NULL
+\begin{DoxyCompactList}\small\item\em timer pre-\/initialized to null. Will be updated in setup \end{DoxyCompactList}\item 
+port\+MUX\+\_\+\+TYPE \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_adedb0f4641b7b425776dbacb23a96576}{timer\+Mux}} = port\+MUX\+\_\+\+INITIALIZER\+\_\+\+UNLOCKED
+\begin{DoxyCompactList}\small\item\em Assuming we need a mutex for timer stuff. Asked Gokul. Said should be fine. \end{DoxyCompactList}\item 
+volatile unsigned long \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a2f0666e78dc5ab63f6db5ea2829b6b68}{counter}} = 0
+\begin{DoxyCompactList}\small\item\em current count \end{DoxyCompactList}\item 
+volatile bool \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a7a700d643e72d0bf85078f58c82b181d}{update\+Display}} = true
+\begin{DoxyCompactList}\small\item\em whether to update the display, flag \end{DoxyCompactList}\item 
+volatile bool \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a7b4f8097239637902b8c4bfbdf5a9ce6}{button\+Interrupt}} = false
+\begin{DoxyCompactList}\small\item\em whether an interrupt took place with regard to buttons, flag \end{DoxyCompactList}\item 
+volatile bool \mbox{\hyperlink{_kalisi___e_e590___lab4___b_l_e_8ino_a9cf791461b1a72365885e171a112cea8}{ble\+Interrupt}} = false
+\begin{DoxyCompactList}\small\item\em whether an interrupt took place with regard to ble, flag \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_abc2ad14f0789907024ac765711ffd3da}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!BUTTON\_PIN@{BUTTON\_PIN}}
+\index{BUTTON\_PIN@{BUTTON\_PIN}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_PIN}{BUTTON\_PIN}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_abc2ad14f0789907024ac765711ffd3da} 
+\#define BUTTON\+\_\+\+PIN~13}
+
+
+
+Push Button Pin. 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a94aefdd5f54049079364e832dc15b336}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!CHARACTERISTIC\_UUID@{CHARACTERISTIC\_UUID}}
+\index{CHARACTERISTIC\_UUID@{CHARACTERISTIC\_UUID}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{CHARACTERISTIC\_UUID}{CHARACTERISTIC\_UUID}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a94aefdd5f54049079364e832dc15b336} 
+\#define CHARACTERISTIC\+\_\+\+UUID~"{}d7b62563-\/544f-\/4e33-\/9251-\/f29577256ead"{}}
+
+
+
+Characteristic UUID. 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a445125ee8c34695376c85f10b38844d6}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!SERVICE\_UUID@{SERVICE\_UUID}}
+\index{SERVICE\_UUID@{SERVICE\_UUID}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{SERVICE\_UUID}{SERVICE\_UUID}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a445125ee8c34695376c85f10b38844d6} 
+\#define SERVICE\+\_\+\+UUID~"{}abac6fe4-\/7fce-\/47a5-\/bc1b-\/85f92ecd786b"{}}
+
+
+
+\texorpdfstring{$<$}{<} Required for quick LCD handling 
+
+\texorpdfstring{$<$}{<} Required for BLE handling which Device, Utils and Server file to use, since i have a few files called such, requires to be first \texorpdfstring{$<$}{<} Required for BLE Device handling Required for BLE Required for BLE Server Handling \texorpdfstring{$<$}{<} Required for I2C Service UUID 
+
+\label{doc-func-members}
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!lcd@{lcd}}
+\index{lcd@{lcd}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{lcd()}{lcd()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d} 
+Liquid\+Crystal\+\_\+\+I2C lcd (\begin{DoxyParamCaption}\item[{0x27}]{}{, }\item[{16}]{}{, }\item[{2}]{}{}\end{DoxyParamCaption})}
+
+
+
+LCD Pre-\/initialization. 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_afe461d27b9c48d5921c00d521181f12f}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!loop@{loop}}
+\index{loop@{loop}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Equivalent to while (1) in main. Checks three things each time, if it needs to update, if it has been interrupted via BLE, or via Button Press. 
+
+Name\+: loop \Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a3a08cf0cfb4242802b018cce6cc4d4f9}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!onButtonPress@{onButtonPress}}
+\index{onButtonPress@{onButtonPress}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{onButtonPress()}{onButtonPress()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a3a08cf0cfb4242802b018cce6cc4d4f9} 
+void IRAM\+\_\+\+ATTR on\+Button\+Press (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ISR to handle button press flag setting on button interrupt call. 
+
+Name\+: on\+Button\+Press \Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_ada06ab1c4bbd307a9fea75726c8894f1}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!onTimer@{onTimer}}
+\index{onTimer@{onTimer}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{onTimer()}{onTimer()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_ada06ab1c4bbd307a9fea75726c8894f1} 
+void IRAM\+\_\+\+ATTR on\+Timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ISR to handle counter update on timer interrupt call. 
+
+Name\+: on\+Timer
+
+enters mutex, ensures counter cannot be updated by anything else. updates it and then exits. \Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!setup@{setup}}
+\index{setup@{setup}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+sets up bluetooth, LCD, timer and button 
+
+Name\+: setup
+
+sets up bluetooth with given name, as expected in the Lab 4 documentation 
+
+\label{doc-var-members}
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a9cf791461b1a72365885e171a112cea8}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!bleInterrupt@{bleInterrupt}}
+\index{bleInterrupt@{bleInterrupt}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{bleInterrupt}{bleInterrupt}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a9cf791461b1a72365885e171a112cea8} 
+volatile bool ble\+Interrupt = false}
+
+
+
+whether an interrupt took place with regard to ble, flag 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a7b4f8097239637902b8c4bfbdf5a9ce6}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!buttonInterrupt@{buttonInterrupt}}
+\index{buttonInterrupt@{buttonInterrupt}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{buttonInterrupt}{buttonInterrupt}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a7b4f8097239637902b8c4bfbdf5a9ce6} 
+volatile bool button\+Interrupt = false}
+
+
+
+whether an interrupt took place with regard to buttons, flag 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a2f0666e78dc5ab63f6db5ea2829b6b68}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!counter@{counter}}
+\index{counter@{counter}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{counter}{counter}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a2f0666e78dc5ab63f6db5ea2829b6b68} 
+volatile unsigned long counter = 0}
+
+
+
+current count 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_ac225b5d04ed848deaae5393d2ce5521e}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!newMessageReceived@{newMessageReceived}}
+\index{newMessageReceived@{newMessageReceived}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{newMessageReceived}{newMessageReceived}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_ac225b5d04ed848deaae5393d2ce5521e} 
+volatile bool new\+Message\+Received = false}
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a97222eeccb5b18e1fc532806c1efcb34}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!timer@{timer}}
+\index{timer@{timer}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a97222eeccb5b18e1fc532806c1efcb34} 
+hw\+\_\+timer\+\_\+t\texorpdfstring{$\ast$}{*} timer = NULL}
+
+
+
+timer pre-\/initialized to null. Will be updated in setup 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_adedb0f4641b7b425776dbacb23a96576}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!timerMux@{timerMux}}
+\index{timerMux@{timerMux}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{timerMux}{timerMux}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_adedb0f4641b7b425776dbacb23a96576} 
+port\+MUX\+\_\+\+TYPE timer\+Mux = port\+MUX\+\_\+\+INITIALIZER\+\_\+\+UNLOCKED}
+
+
+
+Assuming we need a mutex for timer stuff. Asked Gokul. Said should be fine. 
+
+\Hypertarget{_kalisi___e_e590___lab4___b_l_e_8ino_a7a700d643e72d0bf85078f58c82b181d}\index{Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}!updateDisplay@{updateDisplay}}
+\index{updateDisplay@{updateDisplay}!Kalisi\_EE590\_Lab4\_BLE.ino@{Kalisi\_EE590\_Lab4\_BLE.ino}}
+\doxysubsubsection{\texorpdfstring{updateDisplay}{updateDisplay}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4___b_l_e_8ino_a7a700d643e72d0bf85078f58c82b181d} 
+volatile bool update\+Display = true}
+
+
+
+whether to update the display, flag 
+

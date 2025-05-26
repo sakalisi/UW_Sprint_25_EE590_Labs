@@ -1,0 +1,408 @@
+\doxysection{C\+:/\+Users/\+Jayanth Kalisi/\+Documents/\+Arduino/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+TCB/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+TCB.ino File Reference}
+\hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino}{}\label{_kalisi___e_e590___lab4_t_c_b_8ino}\index{C:/Users/Jayanth Kalisi/Documents/Arduino/Kalisi\_EE590\_Lab4TCB/Kalisi\_EE590\_Lab4TCB.ino@{C:/Users/Jayanth Kalisi/Documents/Arduino/Kalisi\_EE590\_Lab4TCB/Kalisi\_EE590\_Lab4TCB.ino}}
+{\ttfamily \#include "{}driver/gpio.\+h"{}}\newline
+{\ttfamily \#include "{}soc/io\+\_\+mux\+\_\+reg.\+h"{}}\newline
+{\ttfamily \#include "{}soc/gpio\+\_\+reg.\+h"{}}\newline
+{\ttfamily \#include "{}soc/gpio\+\_\+periph.\+h"{}}\newline
+{\ttfamily \#include "{}soc/timer\+\_\+group\+\_\+reg.\+h"{}}\newline
+{\ttfamily \#include "{}Wire.\+h"{}}\newline
+{\ttfamily \#include $<$Liquid\+Crystal\+\_\+\+I2\+C.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_l_e_d_control}{LEDControl}}
+\begin{DoxyCompactList}\small\item\em All possible variables needed for controlling the LED. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_l_c_d_control}{LCDControl}}
+\begin{DoxyCompactList}\small\item\em All possible variables needed for controlling the LCD. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_l_e_d_freq_control}{LEDFreq\+Control}}
+\begin{DoxyCompactList}\small\item\em All possible variables needed to control LED intensity. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_print_control}{Print\+Control}}
+\begin{DoxyCompactList}\small\item\em Required variables for controlling Print of all alphabets. Might att len of "{}to\+Print"{} variable to be more robust. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_t_c_bstruct}{TCBstruct}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a666d4df63841557bd11df9e48b3b9df8}{TIMER\+\_\+\+DIVIDER\+\_\+\+VAL}}~80
+\begin{DoxyCompactList}\small\item\em Timer partition. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_aa20dc5438625ad80f27e2b1fc4170c8e}{N\+\_\+\+MAX\+\_\+\+TASKS}}~4
+\begin{DoxyCompactList}\small\item\em Max number of tasks to consider. Should theoretically be 5, with last as NULL, but ignoring that for now. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9e}{taskstate}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a971b28ace7e810c71827f7af60cf817f}{taskstate}}
+\begin{DoxyCompactList}\small\item\em All possible states for Tasks to be. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{struct_t_c_bstruct}{TCBstruct}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a3253eccb7a13c00f0f58eef02e581ff6}{TCBStruct}}
+\begin{DoxyCompactList}\small\item\em All possible variables needed to develop a thread control block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9e}{taskstate}} \{ \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ea39e9fc11b119db5acccb179004077657}{STATE\+\_\+\+INACTIVE}} = 0
+, \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9eaddfe11c6d06c4e27bd6efc18cc4862a6}{STATE\+\_\+\+RUNNING}}
+, \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ea5ae0bbfe1a737c76e53253b05168b56b}{STATE\+\_\+\+READY}}
+, \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ead79a43d70eda33549c20a9f8490e44c1}{STATE\+\_\+\+WAITING}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Liquid\+Crystal\+\_\+\+I2C \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}{lcd}} (0x27, 16, 2)
+\begin{DoxyCompactList}\small\item\em LCD pre-\/initialization. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_aebd01abaa7bfe67acbc46f114c2aa8c3}{handle\+LEDBlinking}} (\mbox{\hyperlink{struct_l_e_d_control}{LEDControl}} \&led)
+\begin{DoxyCompactList}\small\item\em blinks an LED a given number of times at a given frequency \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_ad8e3087dd5a5c3096d2499c84f670c28}{scheduler}} ()
+\begin{DoxyCompactList}\small\item\em handles running tasks in given order \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_ac50b730de8a3df0daf18b072e7f35e15}{reset\+Tasks}} ()
+\begin{DoxyCompactList}\small\item\em resets all tasks to a working state \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em sets up all pins and initializes tasks to the task list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em loop equivalent to while(1), runs scheduler every cycle and updates timer \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Task Functions}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a35dc93be65481bc48981bfba50174928}{taskA}} (void \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Handles setup and calling of blinking LED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a31d2fc5c555a4f7e004c3df209f14571}{taskB}} (void \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Handles counting and display of current count on LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a4332a472954ffb41dcca5e45e4cbc7aa}{taskC}} (void \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Handles increasing intensity of LED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_abe00af36829dedee0f4a68d9c5dc1132}{taskD}} (void \texorpdfstring{$\ast$}{*}p)
+\begin{DoxyCompactList}\small\item\em Handles Printing of alphabet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a8ff8917824bb11b120e3efb000ea55c1}{LED1}} = 1
+\begin{DoxyCompactList}\small\item\em Green LED pin. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a19dc49fffbfb83f43ab05405081e8ff6}{LED2}} = 2
+\begin{DoxyCompactList}\small\item\em Yellow/\+Orange LED pin. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_l_c_d_control}{LCDControl}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a70fbd0ded20de22f636b1ba5cb4b03ef}{lcd\+Control}} = \{1, 0, 500, false\}
+\begin{DoxyCompactList}\small\item\em LCD Control task pre-\/initialization. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_l_e_d_control}{LEDControl}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_ae2d7f3eda0c3f74810c897f0624e5394}{led1}} = \{\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a8ff8917824bb11b120e3efb000ea55c1}{LED1}}, true, LOW, 0, 0, 62500, 0, false\}
+\begin{DoxyCompactList}\small\item\em LED1 task pre-\/initialization. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_l_e_d_freq_control}{LEDFreq\+Control}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a53b4155e40ac5dc22c62e0b70c8f0fc2}{ledc\+Control}} = \{\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a19dc49fffbfb83f43ab05405081e8ff6}{LED2}}, 100, 11, 0, 0, 1000000, false\}
+\begin{DoxyCompactList}\small\item\em ledc-\/\+Control task pre-\/initialization \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_print_control}{Print\+Control}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a28c8f9767b5436a422e8a812dbbd3dd0}{print\+Task}} = \{0, 1000000, 0, "{}ABCDEFGHIJKLMNOPQRSTUVWXYZ"{}, false\}
+\begin{DoxyCompactList}\small\item\em print task pre-\/initialization \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a3253eccb7a13c00f0f58eef02e581ff6}{TCBStruct}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a78acf9ab4cce05bf22c87f940768e011}{Task\+List}} \mbox{[}\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_aa20dc5438625ad80f27e2b1fc4170c8e}{N\+\_\+\+MAX\+\_\+\+TASKS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em list of all tasks \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_af31b72bf5133e9a7f99fe09ee9a56f0b}{base\+Task\+Index}} = 0
+\begin{DoxyCompactList}\small\item\em task priority modifier \end{DoxyCompactList}\item 
+volatile int \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a88fed21844471f6a824297c7eacf52c0}{current\+Running\+Task}} = -\/1
+\begin{DoxyCompactList}\small\item\em current Task index \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_aa20dc5438625ad80f27e2b1fc4170c8e}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!N\_MAX\_TASKS@{N\_MAX\_TASKS}}
+\index{N\_MAX\_TASKS@{N\_MAX\_TASKS}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{N\_MAX\_TASKS}{N\_MAX\_TASKS}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_aa20dc5438625ad80f27e2b1fc4170c8e} 
+\#define N\+\_\+\+MAX\+\_\+\+TASKS~4}
+
+
+
+Max number of tasks to consider. Should theoretically be 5, with last as NULL, but ignoring that for now. 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a666d4df63841557bd11df9e48b3b9df8}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!TIMER\_DIVIDER\_VAL@{TIMER\_DIVIDER\_VAL}}
+\index{TIMER\_DIVIDER\_VAL@{TIMER\_DIVIDER\_VAL}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{TIMER\_DIVIDER\_VAL}{TIMER\_DIVIDER\_VAL}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a666d4df63841557bd11df9e48b3b9df8} 
+\#define TIMER\+\_\+\+DIVIDER\+\_\+\+VAL~80}
+
+
+
+Timer partition. 
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a971b28ace7e810c71827f7af60cf817f}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!taskstate@{taskstate}}
+\index{taskstate@{taskstate}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{taskstate}{taskstate}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a971b28ace7e810c71827f7af60cf817f} 
+typedef enum \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9e}{taskstate}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9e}{taskstate}}}
+
+
+
+All possible states for Tasks to be. 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a3253eccb7a13c00f0f58eef02e581ff6}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!TCBStruct@{TCBStruct}}
+\index{TCBStruct@{TCBStruct}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{TCBStruct}{TCBStruct}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a3253eccb7a13c00f0f58eef02e581ff6} 
+typedef struct \mbox{\hyperlink{struct_t_c_bstruct}{TCBstruct}} \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a3253eccb7a13c00f0f58eef02e581ff6}{TCBStruct}}}
+
+
+
+All possible variables needed to develop a thread control block. 
+
+
+
+\label{doc-enum-members}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9e}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!taskstate@{taskstate}}
+\index{taskstate@{taskstate}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{taskstate}{taskstate}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9e} 
+enum \mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9e}{taskstate}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_INACTIVE@{STATE\_INACTIVE}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!STATE\_INACTIVE@{STATE\_INACTIVE}}}\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ea39e9fc11b119db5acccb179004077657}\label{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ea39e9fc11b119db5acccb179004077657} 
+STATE\+\_\+\+INACTIVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_RUNNING@{STATE\_RUNNING}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!STATE\_RUNNING@{STATE\_RUNNING}}}\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9eaddfe11c6d06c4e27bd6efc18cc4862a6}\label{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9eaddfe11c6d06c4e27bd6efc18cc4862a6} 
+STATE\+\_\+\+RUNNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_READY@{STATE\_READY}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!STATE\_READY@{STATE\_READY}}}\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ea5ae0bbfe1a737c76e53253b05168b56b}\label{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ea5ae0bbfe1a737c76e53253b05168b56b} 
+STATE\+\_\+\+READY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STATE\_WAITING@{STATE\_WAITING}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!STATE\_WAITING@{STATE\_WAITING}}}\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ead79a43d70eda33549c20a9f8490e44c1}\label{_kalisi___e_e590___lab4_t_c_b_8ino_a61b9e2835d487eb729fecbe56ff32d9ead79a43d70eda33549c20a9f8490e44c1} 
+STATE\+\_\+\+WAITING&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\label{doc-func-members}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_aebd01abaa7bfe67acbc46f114c2aa8c3}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!handleLEDBlinking@{handleLEDBlinking}}
+\index{handleLEDBlinking@{handleLEDBlinking}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{handleLEDBlinking()}{handleLEDBlinking()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_aebd01abaa7bfe67acbc46f114c2aa8c3} 
+void handle\+LEDBlinking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_l_e_d_control}{LEDControl}} \&}]{led}{}\end{DoxyParamCaption})}
+
+
+
+blinks an LED a given number of times at a given frequency 
+
+Name\+: handle\+LEDBlinking 
+\begin{DoxyParams}{Parameters}
+{\em led} & struct containing all information needed to run task. See struct for details\\
+\hline
+\end{DoxyParams}
+This function is a holdover from the ICTE. Modified it. Did not change much of the underlying logic. if task is done, returns if time threshold is met, swaps LED state if blink count reaches count, considers task done \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!lcd@{lcd}}
+\index{lcd@{lcd}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{lcd()}{lcd()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d} 
+Liquid\+Crystal\+\_\+\+I2C lcd (\begin{DoxyParamCaption}\item[{0x27}]{}{, }\item[{16}]{}{, }\item[{2}]{}{}\end{DoxyParamCaption})}
+
+
+
+LCD pre-\/initialization. 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_afe461d27b9c48d5921c00d521181f12f}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!loop@{loop}}
+\index{loop@{loop}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+loop equivalent to while(1), runs scheduler every cycle and updates timer 
+
+Name\+: loop \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_ac50b730de8a3df0daf18b072e7f35e15}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!resetTasks@{resetTasks}}
+\index{resetTasks@{resetTasks}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{resetTasks()}{resetTasks()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_ac50b730de8a3df0daf18b072e7f35e15} 
+void reset\+Tasks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+resets all tasks to a working state 
+
+Name\+: reset\+Tasks
+
+goes through all structs and sets is\+Done to false, and ensures all reach their starting values Sets the state of all tasks to STATE\+\_\+\+READY, and dictates that no task is currently running \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_ad8e3087dd5a5c3096d2499c84f670c28}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!scheduler@{scheduler}}
+\index{scheduler@{scheduler}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{scheduler()}{scheduler()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_ad8e3087dd5a5c3096d2499c84f670c28} 
+void scheduler (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+handles running tasks in given order 
+
+Name\+: scheduler
+
+if no task is running\+:
+\begin{DoxyItemize}
+\item loops through all tasks and runs the first one that is ready, given the current offset it needs to follow
+\item If state is ready runs only that task and nothing else for the cycle If a task is running\+:
+\item Calls just that task If all tasks have run, calls \doxylink{_kalisi___e_e590___lab4_t_c_b_8ino_ac50b730de8a3df0daf18b072e7f35e15}{reset\+Tasks()} function and updates starting index 
+\end{DoxyItemize}\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!setup@{setup}}
+\index{setup@{setup}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+sets up all pins and initializes tasks to the task list. 
+
+Name\+: setup
+
+Starts up serial, LED pins, I2C pins, LCD pins and Timer. Initializes array of tasks and their primary values \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a35dc93be65481bc48981bfba50174928}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!taskA@{taskA}}
+\index{taskA@{taskA}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{taskA()}{taskA()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a35dc93be65481bc48981bfba50174928} 
+void taskA (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Handles setup and calling of blinking LED. 
+
+Name\+: taskA 
+\begin{DoxyParams}{Parameters}
+{\em p} & arguments to any function if needed\\
+\hline
+\end{DoxyParams}
+This function is a holdover from the ICTE. Modified it. Did not change much of the underlying logic. Calls LED blinking function. if task is done, and its the current task, sets the current running task to nothing, sets current state to inactive and prints out that the task is completed. \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a31d2fc5c555a4f7e004c3df209f14571}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!taskB@{taskB}}
+\index{taskB@{taskB}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{taskB()}{taskB()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a31d2fc5c555a4f7e004c3df209f14571} 
+void taskB (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Handles counting and display of current count on LCD. 
+
+Name\+: taskB 
+\begin{DoxyParams}{Parameters}
+{\em p} & arguments to any function if needed\\
+\hline
+\end{DoxyParams}
+Modified version of TaskA logic, but for LCD Control if task is done, returns if time threshold passes, count is printed and updated, threshold is reset. if count surpasses threshold, task is considered done, and task status is updated, printed as complete, with priority \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a4332a472954ffb41dcca5e45e4cbc7aa}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!taskC@{taskC}}
+\index{taskC@{taskC}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{taskC()}{taskC()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a4332a472954ffb41dcca5e45e4cbc7aa} 
+void taskC (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Handles increasing intensity of LED. 
+
+Name\+: taskC 
+\begin{DoxyParams}{Parameters}
+{\em p} & arguments to any function if needed\\
+\hline
+\end{DoxyParams}
+Modified version of TaskA logic, but LED intensity control if task is done, returns LED is constantly outputted at a given frequency if time threshold passes, intensity is and updated, time threshold is reset. if count surpasses number of intensities to check, task is considered done, and task status is updated, printed as complete, with priority \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_abe00af36829dedee0f4a68d9c5dc1132}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!taskD@{taskD}}
+\index{taskD@{taskD}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{taskD()}{taskD()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_abe00af36829dedee0f4a68d9c5dc1132} 
+void taskD (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{p}{}\end{DoxyParamCaption})}
+
+
+
+Handles Printing of alphabet. 
+
+Name\+: taskD 
+\begin{DoxyParams}{Parameters}
+{\em p} & arguments to any function if needed\\
+\hline
+\end{DoxyParams}
+Modified version of TaskA logic, but for printing alphabet if task is done, returns if time threshold passes, value is printed and updated, time threshold is reset. if count surpasses number of letters to check, task is considered done, and task status is updated, printed as complete, with priority 
+
+\label{doc-var-members}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_af31b72bf5133e9a7f99fe09ee9a56f0b}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!baseTaskIndex@{baseTaskIndex}}
+\index{baseTaskIndex@{baseTaskIndex}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{baseTaskIndex}{baseTaskIndex}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_af31b72bf5133e9a7f99fe09ee9a56f0b} 
+int base\+Task\+Index = 0}
+
+
+
+task priority modifier 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a88fed21844471f6a824297c7eacf52c0}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!currentRunningTask@{currentRunningTask}}
+\index{currentRunningTask@{currentRunningTask}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{currentRunningTask}{currentRunningTask}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a88fed21844471f6a824297c7eacf52c0} 
+volatile int current\+Running\+Task = -\/1}
+
+
+
+current Task index 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a70fbd0ded20de22f636b1ba5cb4b03ef}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!lcdControl@{lcdControl}}
+\index{lcdControl@{lcdControl}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{lcdControl}{lcdControl}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a70fbd0ded20de22f636b1ba5cb4b03ef} 
+\mbox{\hyperlink{struct_l_c_d_control}{LCDControl}} lcd\+Control = \{1, 0, 500, false\}}
+
+
+
+LCD Control task pre-\/initialization. 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a8ff8917824bb11b120e3efb000ea55c1}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!LED1@{LED1}}
+\index{LED1@{LED1}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{LED1}{LED1}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a8ff8917824bb11b120e3efb000ea55c1} 
+const int LED1 = 1}
+
+
+
+Green LED pin. 
+
+\texorpdfstring{$<$}{<} Required for GPIO use Required for quick GPIO use Required for GPIO Required for GPIO Required for Timing Required for I2C communication Required for Quick LCD usage \Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_ae2d7f3eda0c3f74810c897f0624e5394}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!led1@{led1}}
+\index{led1@{led1}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{led1}{led1}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_ae2d7f3eda0c3f74810c897f0624e5394} 
+\mbox{\hyperlink{struct_l_e_d_control}{LEDControl}} led1 = \{\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a8ff8917824bb11b120e3efb000ea55c1}{LED1}}, true, LOW, 0, 0, 62500, 0, false\}}
+
+
+
+LED1 task pre-\/initialization. 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a19dc49fffbfb83f43ab05405081e8ff6}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!LED2@{LED2}}
+\index{LED2@{LED2}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{LED2}{LED2}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a19dc49fffbfb83f43ab05405081e8ff6} 
+const int LED2 = 2}
+
+
+
+Yellow/\+Orange LED pin. 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a53b4155e40ac5dc22c62e0b70c8f0fc2}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!ledcControl@{ledcControl}}
+\index{ledcControl@{ledcControl}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{ledcControl}{ledcControl}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a53b4155e40ac5dc22c62e0b70c8f0fc2} 
+\mbox{\hyperlink{struct_l_e_d_freq_control}{LEDFreq\+Control}} ledc\+Control = \{\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a19dc49fffbfb83f43ab05405081e8ff6}{LED2}}, 100, 11, 0, 0, 1000000, false\}}
+
+
+
+ledc-\/\+Control task pre-\/initialization 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a28c8f9767b5436a422e8a812dbbd3dd0}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!printTask@{printTask}}
+\index{printTask@{printTask}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{printTask}{printTask}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a28c8f9767b5436a422e8a812dbbd3dd0} 
+\mbox{\hyperlink{struct_print_control}{Print\+Control}} print\+Task = \{0, 1000000, 0, "{}ABCDEFGHIJKLMNOPQRSTUVWXYZ"{}, false\}}
+
+
+
+print task pre-\/initialization 
+
+\Hypertarget{_kalisi___e_e590___lab4_t_c_b_8ino_a78acf9ab4cce05bf22c87f940768e011}\index{Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}!TaskList@{TaskList}}
+\index{TaskList@{TaskList}!Kalisi\_EE590\_Lab4TCB.ino@{Kalisi\_EE590\_Lab4TCB.ino}}
+\doxysubsubsection{\texorpdfstring{TaskList}{TaskList}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_t_c_b_8ino_a78acf9ab4cce05bf22c87f940768e011} 
+\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_a3253eccb7a13c00f0f58eef02e581ff6}{TCBStruct}} Task\+List\mbox{[}\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino_aa20dc5438625ad80f27e2b1fc4170c8e}{N\+\_\+\+MAX\+\_\+\+TASKS}}\mbox{]}}
+
+
+
+list of all tasks 
+

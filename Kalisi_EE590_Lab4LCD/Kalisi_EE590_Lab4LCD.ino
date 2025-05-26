@@ -25,7 +25,7 @@
  * Last Modified by Sai Jayanth Kalisi on 05/25/2025.
  */
 
-// ========== Librariess =========== //
+// ========== Libraries =========== //
 #include <Wire.h> ///< Required for I2C communication
 
 // ========== DEFINEs =========== //

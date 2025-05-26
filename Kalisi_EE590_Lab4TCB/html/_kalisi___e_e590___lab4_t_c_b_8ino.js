@@ -1,0 +1,37 @@
+var _kalisi___e_e590___lab4_t_c_b_8ino =
+[
+    [ "LEDControl", "struct_l_e_d_control.html", "struct_l_e_d_control" ],
+    [ "LCDControl", "struct_l_c_d_control.html", "struct_l_c_d_control" ],
+    [ "LEDFreqControl", "struct_l_e_d_freq_control.html", "struct_l_e_d_freq_control" ],
+    [ "PrintControl", "struct_print_control.html", "struct_print_control" ],
+    [ "TCBstruct", "struct_t_c_bstruct.html", "struct_t_c_bstruct" ],
+    [ "N_MAX_TASKS", "_kalisi___e_e590___lab4_t_c_b_8ino.html#aa20dc5438625ad80f27e2b1fc4170c8e", null ],
+    [ "TIMER_DIVIDER_VAL", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a666d4df63841557bd11df9e48b3b9df8", null ],
+    [ "taskstate", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a971b28ace7e810c71827f7af60cf817f", null ],
+    [ "TCBStruct", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a3253eccb7a13c00f0f58eef02e581ff6", null ],
+    [ "taskstate", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a61b9e2835d487eb729fecbe56ff32d9e", [
+      [ "STATE_INACTIVE", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a61b9e2835d487eb729fecbe56ff32d9ea39e9fc11b119db5acccb179004077657", null ],
+      [ "STATE_RUNNING", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a61b9e2835d487eb729fecbe56ff32d9eaddfe11c6d06c4e27bd6efc18cc4862a6", null ],
+      [ "STATE_READY", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a61b9e2835d487eb729fecbe56ff32d9ea5ae0bbfe1a737c76e53253b05168b56b", null ],
+      [ "STATE_WAITING", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a61b9e2835d487eb729fecbe56ff32d9ead79a43d70eda33549c20a9f8490e44c1", null ]
+    ] ],
+    [ "handleLEDBlinking", "_kalisi___e_e590___lab4_t_c_b_8ino.html#aebd01abaa7bfe67acbc46f114c2aa8c3", null ],
+    [ "lcd", "_kalisi___e_e590___lab4_t_c_b_8ino.html#ae084e1bc8ccb35ea289ba0ca4972ea6d", null ],
+    [ "loop", "_kalisi___e_e590___lab4_t_c_b_8ino.html#afe461d27b9c48d5921c00d521181f12f", null ],
+    [ "resetTasks", "_kalisi___e_e590___lab4_t_c_b_8ino.html#ac50b730de8a3df0daf18b072e7f35e15", null ],
+    [ "scheduler", "_kalisi___e_e590___lab4_t_c_b_8ino.html#ad8e3087dd5a5c3096d2499c84f670c28", null ],
+    [ "setup", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
+    [ "taskA", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a35dc93be65481bc48981bfba50174928", null ],
+    [ "taskB", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a31d2fc5c555a4f7e004c3df209f14571", null ],
+    [ "taskC", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a4332a472954ffb41dcca5e45e4cbc7aa", null ],
+    [ "taskD", "_kalisi___e_e590___lab4_t_c_b_8ino.html#abe00af36829dedee0f4a68d9c5dc1132", null ],
+    [ "baseTaskIndex", "_kalisi___e_e590___lab4_t_c_b_8ino.html#af31b72bf5133e9a7f99fe09ee9a56f0b", null ],
+    [ "currentRunningTask", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a88fed21844471f6a824297c7eacf52c0", null ],
+    [ "lcdControl", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a70fbd0ded20de22f636b1ba5cb4b03ef", null ],
+    [ "LED1", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a8ff8917824bb11b120e3efb000ea55c1", null ],
+    [ "led1", "_kalisi___e_e590___lab4_t_c_b_8ino.html#ae2d7f3eda0c3f74810c897f0624e5394", null ],
+    [ "LED2", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a19dc49fffbfb83f43ab05405081e8ff6", null ],
+    [ "ledcControl", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a53b4155e40ac5dc22c62e0b70c8f0fc2", null ],
+    [ "printTask", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a28c8f9767b5436a422e8a812dbbd3dd0", null ],
+    [ "TaskList", "_kalisi___e_e590___lab4_t_c_b_8ino.html#a78acf9ab4cce05bf22c87f940768e011", null ]
+];

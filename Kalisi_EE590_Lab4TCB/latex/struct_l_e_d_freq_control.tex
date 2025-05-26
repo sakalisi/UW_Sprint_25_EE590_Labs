@@ -1,0 +1,107 @@
+\doxysection{LEDFreq\+Control Struct Reference}
+\hypertarget{struct_l_e_d_freq_control}{}\label{struct_l_e_d_freq_control}\index{LEDFreqControl@{LEDFreqControl}}
+
+
+All possible variables needed to control LED intensity.  
+
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_l_e_d_freq_control_ab81570ddcfd8f18523be0927960b81d2}{pin}}
+\begin{DoxyCompactList}\small\item\em Current LED Pin. Useful for multiple LED setup. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_l_e_d_freq_control_a01969e7bc5a045fe3e74da22b63b269f}{freq}}
+\begin{DoxyCompactList}\small\item\em freq of LED, calculates pulse width based on how often the pulse can take place \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_l_e_d_freq_control_a6e214099dd2189a57a68386b7e781148}{resolution}}
+\begin{DoxyCompactList}\small\item\em how detailed the pulse can be \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_l_e_d_freq_control_a43ea7697b1ff9c12fe7d1c74b8dc379b}{previous\+Micros}}
+\begin{DoxyCompactList}\small\item\em How long since last time the intensity changed. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_l_e_d_freq_control_a3a2279ece9e0579c601648328affe9b2}{various\+Freqs\+Checked}}
+\begin{DoxyCompactList}\small\item\em How many frequencies we checked. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_l_e_d_freq_control_a5a1e03c2402906651e9d5597fc1cf322}{change\+Time}}
+\begin{DoxyCompactList}\small\item\em Minimum time between each intensity change. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_l_e_d_freq_control_a9a5f15c0f2aba99701c54ba713e2f9f3}{is\+Done}}
+\begin{DoxyCompactList}\small\item\em If task is done. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All possible variables needed to control LED intensity. 
+
+\label{doc-variable-members}
+\Hypertarget{struct_l_e_d_freq_control_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_l_e_d_freq_control_a5a1e03c2402906651e9d5597fc1cf322}\index{LEDFreqControl@{LEDFreqControl}!changeTime@{changeTime}}
+\index{changeTime@{changeTime}!LEDFreqControl@{LEDFreqControl}}
+\doxysubsubsection{\texorpdfstring{changeTime}{changeTime}}
+{\footnotesize\ttfamily \label{struct_l_e_d_freq_control_a5a1e03c2402906651e9d5597fc1cf322} 
+int LEDFreq\+Control\+::change\+Time}
+
+
+
+Minimum time between each intensity change. 
+
+\Hypertarget{struct_l_e_d_freq_control_a01969e7bc5a045fe3e74da22b63b269f}\index{LEDFreqControl@{LEDFreqControl}!freq@{freq}}
+\index{freq@{freq}!LEDFreqControl@{LEDFreqControl}}
+\doxysubsubsection{\texorpdfstring{freq}{freq}}
+{\footnotesize\ttfamily \label{struct_l_e_d_freq_control_a01969e7bc5a045fe3e74da22b63b269f} 
+int LEDFreq\+Control\+::freq}
+
+
+
+freq of LED, calculates pulse width based on how often the pulse can take place 
+
+\Hypertarget{struct_l_e_d_freq_control_a9a5f15c0f2aba99701c54ba713e2f9f3}\index{LEDFreqControl@{LEDFreqControl}!isDone@{isDone}}
+\index{isDone@{isDone}!LEDFreqControl@{LEDFreqControl}}
+\doxysubsubsection{\texorpdfstring{isDone}{isDone}}
+{\footnotesize\ttfamily \label{struct_l_e_d_freq_control_a9a5f15c0f2aba99701c54ba713e2f9f3} 
+bool LEDFreq\+Control\+::is\+Done}
+
+
+
+If task is done. 
+
+\Hypertarget{struct_l_e_d_freq_control_ab81570ddcfd8f18523be0927960b81d2}\index{LEDFreqControl@{LEDFreqControl}!pin@{pin}}
+\index{pin@{pin}!LEDFreqControl@{LEDFreqControl}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily \label{struct_l_e_d_freq_control_ab81570ddcfd8f18523be0927960b81d2} 
+int LEDFreq\+Control\+::pin}
+
+
+
+Current LED Pin. Useful for multiple LED setup. 
+
+\Hypertarget{struct_l_e_d_freq_control_a43ea7697b1ff9c12fe7d1c74b8dc379b}\index{LEDFreqControl@{LEDFreqControl}!previousMicros@{previousMicros}}
+\index{previousMicros@{previousMicros}!LEDFreqControl@{LEDFreqControl}}
+\doxysubsubsection{\texorpdfstring{previousMicros}{previousMicros}}
+{\footnotesize\ttfamily \label{struct_l_e_d_freq_control_a43ea7697b1ff9c12fe7d1c74b8dc379b} 
+int LEDFreq\+Control\+::previous\+Micros}
+
+
+
+How long since last time the intensity changed. 
+
+\Hypertarget{struct_l_e_d_freq_control_a6e214099dd2189a57a68386b7e781148}\index{LEDFreqControl@{LEDFreqControl}!resolution@{resolution}}
+\index{resolution@{resolution}!LEDFreqControl@{LEDFreqControl}}
+\doxysubsubsection{\texorpdfstring{resolution}{resolution}}
+{\footnotesize\ttfamily \label{struct_l_e_d_freq_control_a6e214099dd2189a57a68386b7e781148} 
+int LEDFreq\+Control\+::resolution}
+
+
+
+how detailed the pulse can be 
+
+\Hypertarget{struct_l_e_d_freq_control_a3a2279ece9e0579c601648328affe9b2}\index{LEDFreqControl@{LEDFreqControl}!variousFreqsChecked@{variousFreqsChecked}}
+\index{variousFreqsChecked@{variousFreqsChecked}!LEDFreqControl@{LEDFreqControl}}
+\doxysubsubsection{\texorpdfstring{variousFreqsChecked}{variousFreqsChecked}}
+{\footnotesize\ttfamily \label{struct_l_e_d_freq_control_a3a2279ece9e0579c601648328affe9b2} 
+int LEDFreq\+Control\+::various\+Freqs\+Checked}
+
+
+
+How many frequencies we checked. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Jayanth Kalisi/\+Documents/\+Arduino/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+TCB/\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino}{Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+TCB.\+ino}}\end{DoxyCompactItemize}

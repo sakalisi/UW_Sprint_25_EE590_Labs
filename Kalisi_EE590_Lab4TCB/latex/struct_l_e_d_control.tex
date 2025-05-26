@@ -1,0 +1,119 @@
+\doxysection{LEDControl Struct Reference}
+\hypertarget{struct_l_e_d_control}{}\label{struct_l_e_d_control}\index{LEDControl@{LEDControl}}
+
+
+All possible variables needed for controlling the LED.  
+
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{struct_l_e_d_control_a12b6d1d9aab9101dcce6e33091ea92f2}{pin}}
+\begin{DoxyCompactList}\small\item\em Current LED Pin. Useful for multiple LED setup. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_l_e_d_control_a595e9060aaddc4254faf1ff9010f0951}{is\+Blinking}}
+\begin{DoxyCompactList}\small\item\em Current LED action. Not really used, could be removed. Remanent from ICTE. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_l_e_d_control_a43ee95802d627de1eeb8d480f95c2826}{state}}
+\begin{DoxyCompactList}\small\item\em Current LED state. should be HIGH or LOW. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{struct_l_e_d_control_ae961ef27f35c11eaf1ca69300093a433}{previous\+Micros}}
+\begin{DoxyCompactList}\small\item\em time since last blink in Microseconds \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{struct_l_e_d_control_a789ce55bc308ddd8f300f0780c74d4b8}{time\+Since\+Begin\+Task}}
+\begin{DoxyCompactList}\small\item\em time since task started. Not really used, could be removed. Tried to do time based, but count based looks better \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{struct_l_e_d_control_a6ac928847970878a42269763cc82d8ef}{blink\+Interval}}
+\begin{DoxyCompactList}\small\item\em how long between swaps in Microseconds \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_l_e_d_control_a6d7911f39c9806cf06128a80d8c75371}{blink\+Count}}
+\begin{DoxyCompactList}\small\item\em how many blinks done. Max wshould be 16. Value can be coded in as another attribute \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{struct_l_e_d_control_ac0d13f84549075afdfa02351ed3f1e2d}{is\+Done}}
+\begin{DoxyCompactList}\small\item\em whether task is done \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All possible variables needed for controlling the LED. 
+
+\label{doc-variable-members}
+\Hypertarget{struct_l_e_d_control_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_l_e_d_control_a6d7911f39c9806cf06128a80d8c75371}\index{LEDControl@{LEDControl}!blinkCount@{blinkCount}}
+\index{blinkCount@{blinkCount}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{blinkCount}{blinkCount}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_a6d7911f39c9806cf06128a80d8c75371} 
+int LEDControl\+::blink\+Count}
+
+
+
+how many blinks done. Max wshould be 16. Value can be coded in as another attribute 
+
+\Hypertarget{struct_l_e_d_control_a6ac928847970878a42269763cc82d8ef}\index{LEDControl@{LEDControl}!blinkInterval@{blinkInterval}}
+\index{blinkInterval@{blinkInterval}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{blinkInterval}{blinkInterval}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_a6ac928847970878a42269763cc82d8ef} 
+unsigned long LEDControl\+::blink\+Interval}
+
+
+
+how long between swaps in Microseconds 
+
+\Hypertarget{struct_l_e_d_control_a595e9060aaddc4254faf1ff9010f0951}\index{LEDControl@{LEDControl}!isBlinking@{isBlinking}}
+\index{isBlinking@{isBlinking}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{isBlinking}{isBlinking}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_a595e9060aaddc4254faf1ff9010f0951} 
+bool LEDControl\+::is\+Blinking}
+
+
+
+Current LED action. Not really used, could be removed. Remanent from ICTE. 
+
+\Hypertarget{struct_l_e_d_control_ac0d13f84549075afdfa02351ed3f1e2d}\index{LEDControl@{LEDControl}!isDone@{isDone}}
+\index{isDone@{isDone}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{isDone}{isDone}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_ac0d13f84549075afdfa02351ed3f1e2d} 
+bool LEDControl\+::is\+Done}
+
+
+
+whether task is done 
+
+\Hypertarget{struct_l_e_d_control_a12b6d1d9aab9101dcce6e33091ea92f2}\index{LEDControl@{LEDControl}!pin@{pin}}
+\index{pin@{pin}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{pin}{pin}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_a12b6d1d9aab9101dcce6e33091ea92f2} 
+int LEDControl\+::pin}
+
+
+
+Current LED Pin. Useful for multiple LED setup. 
+
+\Hypertarget{struct_l_e_d_control_ae961ef27f35c11eaf1ca69300093a433}\index{LEDControl@{LEDControl}!previousMicros@{previousMicros}}
+\index{previousMicros@{previousMicros}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{previousMicros}{previousMicros}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_ae961ef27f35c11eaf1ca69300093a433} 
+unsigned long LEDControl\+::previous\+Micros}
+
+
+
+time since last blink in Microseconds 
+
+\Hypertarget{struct_l_e_d_control_a43ee95802d627de1eeb8d480f95c2826}\index{LEDControl@{LEDControl}!state@{state}}
+\index{state@{state}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_a43ee95802d627de1eeb8d480f95c2826} 
+bool LEDControl\+::state}
+
+
+
+Current LED state. should be HIGH or LOW. 
+
+\Hypertarget{struct_l_e_d_control_a789ce55bc308ddd8f300f0780c74d4b8}\index{LEDControl@{LEDControl}!timeSinceBeginTask@{timeSinceBeginTask}}
+\index{timeSinceBeginTask@{timeSinceBeginTask}!LEDControl@{LEDControl}}
+\doxysubsubsection{\texorpdfstring{timeSinceBeginTask}{timeSinceBeginTask}}
+{\footnotesize\ttfamily \label{struct_l_e_d_control_a789ce55bc308ddd8f300f0780c74d4b8} 
+unsigned long LEDControl\+::time\+Since\+Begin\+Task}
+
+
+
+time since task started. Not really used, could be removed. Tried to do time based, but count based looks better 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Jayanth Kalisi/\+Documents/\+Arduino/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+TCB/\mbox{\hyperlink{_kalisi___e_e590___lab4_t_c_b_8ino}{Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+TCB.\+ino}}\end{DoxyCompactItemize}

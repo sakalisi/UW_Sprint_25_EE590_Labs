@@ -1,0 +1,256 @@
+\doxysection{C\+:/\+Users/\+Jayanth Kalisi/\+Documents/\+Arduino/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+LCD/\+Kalisi\+\_\+\+EE590\+\_\+\+Lab4\+LCD.ino File Reference}
+\hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino}{}\label{_kalisi___e_e590___lab4_l_c_d_8ino}\index{C:/Users/Jayanth Kalisi/Documents/Arduino/Kalisi\_EE590\_Lab4LCD/Kalisi\_EE590\_Lab4LCD.ino@{C:/Users/Jayanth Kalisi/Documents/Arduino/Kalisi\_EE590\_Lab4LCD/Kalisi\_EE590\_Lab4LCD.ino}}
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a2e78122c7a8b3a9480ef8f898cb01c8e}{I2\+C\+\_\+\+ADDR}}~0x27
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Required for I2C communication \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_ac059d24dfe9c1e1f7c07cb7869a1833b}{LCD\+\_\+\+BACKLIGHT}}~0x08
+\begin{DoxyCompactList}\small\item\em LCD backlight control bit (enabling on, iirc) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a514ad415fb6125ba296793df7d1a468a}{ENABLE}}~0x04
+\begin{DoxyCompactList}\small\item\em Enable datalatching bit (will be used for latching via pulse enable) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_af8903d8eea3868940c60af887473b152}{RS}}~0x01
+\begin{DoxyCompactList}\small\item\em Register select bit (0 = command, 1 = data) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{Indent}\textbf{ I2C LCD Transmission}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a2816de4e7f9d54baaf2df838f5719e23}{i2c\+Send}} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Sends a byte to the LCD via I2C with the backlight bit set if enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a078e5ed7b3ca700b3b5feba40eff69f2}{pulse\+Enable}} (uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Pulses the enable pin to latch data into the LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_ad642faaae22029bc87d822aa3692f2af}{send\+Nibble}} (uint8\+\_\+t nibble, uint8\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sends a 4-\/bit nibble to the LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a80266826c393af0bf7cd9ccda3b4a734}{send\+Byte}} (uint8\+\_\+t value, uint8\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sends a full 8-\/bit byte to the LCD by splitting it into two nibbles. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a4ad1bbb392f9aad8e794174f14a759f2}{lcd\+Command}} (uint8\+\_\+t cmd)
+\begin{DoxyCompactList}\small\item\em Sends a command byte to the LCD via the send\+Byte Function. Is different from the lcd Write char because of RS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_aceeb29b7823e293bc03c94a9c80bde88}{lcd\+Write\+Char}} (char ch)
+\begin{DoxyCompactList}\small\item\em Writes a single character to the LCD at the current cursor location. Is different from the lcd Command because of RS. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a4f091b149d3c3e0fb9d73fb79a152f72}{lcd\+Set\+Cursor}} (int col, int row)
+\begin{DoxyCompactList}\small\item\em Sets the cursor to the specified column and row. Used for wrapping and initial setup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Main Function Components}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em setup all pins -\/ initializes the LCD and Serial monitor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em loop to be run repeatedly. Equivalent to running everything in main whith a while(1). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a64a3e7676422964ce07bcbd2b9afb556}{cursor\+Col}} = 0
+\begin{DoxyCompactList}\small\item\em Current Column Position of LED Cursor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_kalisi___e_e590___lab4_l_c_d_8ino_a6c25c0a837f6eb7576bd15e26e0326d3}{cursor\+Row}} = 0
+\begin{DoxyCompactList}\small\item\em Current Row Position of LED Cursor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a514ad415fb6125ba296793df7d1a468a}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!ENABLE@{ENABLE}}
+\index{ENABLE@{ENABLE}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{ENABLE}{ENABLE}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a514ad415fb6125ba296793df7d1a468a} 
+\#define ENABLE~0x04}
+
+
+
+Enable datalatching bit (will be used for latching via pulse enable) 
+
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a2e78122c7a8b3a9480ef8f898cb01c8e}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!I2C\_ADDR@{I2C\_ADDR}}
+\index{I2C\_ADDR@{I2C\_ADDR}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{I2C\_ADDR}{I2C\_ADDR}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a2e78122c7a8b3a9480ef8f898cb01c8e} 
+\#define I2\+C\+\_\+\+ADDR~0x27}
+
+
+
+\texorpdfstring{$<$}{<} Required for I2C communication 
+
+I2C address of the LCD (apparently can be from 0x20 to 0x27) \Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_ac059d24dfe9c1e1f7c07cb7869a1833b}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!LCD\_BACKLIGHT@{LCD\_BACKLIGHT}}
+\index{LCD\_BACKLIGHT@{LCD\_BACKLIGHT}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{LCD\_BACKLIGHT}{LCD\_BACKLIGHT}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_ac059d24dfe9c1e1f7c07cb7869a1833b} 
+\#define LCD\+\_\+\+BACKLIGHT~0x08}
+
+
+
+LCD backlight control bit (enabling on, iirc) 
+
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_af8903d8eea3868940c60af887473b152}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!RS@{RS}}
+\index{RS@{RS}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{RS}{RS}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_af8903d8eea3868940c60af887473b152} 
+\#define RS~0x01}
+
+
+
+Register select bit (0 = command, 1 = data) 
+
+
+
+\label{doc-func-members}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a2816de4e7f9d54baaf2df838f5719e23}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!i2cSend@{i2cSend}}
+\index{i2cSend@{i2cSend}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{i2cSend()}{i2cSend()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a2816de4e7f9d54baaf2df838f5719e23} 
+void i2c\+Send (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Sends a byte to the LCD via I2C with the backlight bit set if enabled. 
+
+Name\+: i2c\+Send 
+\begin{DoxyParams}{Parameters}
+{\em data} & The byte to send to the LCD, part nibble, part information \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a4ad1bbb392f9aad8e794174f14a759f2}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!lcdCommand@{lcdCommand}}
+\index{lcdCommand@{lcdCommand}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{lcdCommand()}{lcdCommand()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a4ad1bbb392f9aad8e794174f14a759f2} 
+void lcd\+Command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cmd}{}\end{DoxyParamCaption})}
+
+
+
+Sends a command byte to the LCD via the send\+Byte Function. Is different from the lcd Write char because of RS. 
+
+Name\+: lcd\+Command 
+\begin{DoxyParams}{Parameters}
+{\em cmd} & The command byte. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a4f091b149d3c3e0fb9d73fb79a152f72}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!lcdSetCursor@{lcdSetCursor}}
+\index{lcdSetCursor@{lcdSetCursor}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{lcdSetCursor()}{lcdSetCursor()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a4f091b149d3c3e0fb9d73fb79a152f72} 
+void lcd\+Set\+Cursor (\begin{DoxyParamCaption}\item[{int}]{col}{, }\item[{int}]{row}{}\end{DoxyParamCaption})}
+
+
+
+Sets the cursor to the specified column and row. Used for wrapping and initial setup. 
+
+Name\+: lcd\+Set\+Cursor 
+\begin{DoxyParams}{Parameters}
+{\em col} & column of cursor location. (min 0, max 15) \\
+\hline
+{\em row} & row of cursor location. (min 0, max 1) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_aceeb29b7823e293bc03c94a9c80bde88}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!lcdWriteChar@{lcdWriteChar}}
+\index{lcdWriteChar@{lcdWriteChar}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{lcdWriteChar()}{lcdWriteChar()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_aceeb29b7823e293bc03c94a9c80bde88} 
+void lcd\+Write\+Char (\begin{DoxyParamCaption}\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Writes a single character to the LCD at the current cursor location. Is different from the lcd Command because of RS. 
+
+Name\+: lcd\+Write\+Char 
+\begin{DoxyParams}{Parameters}
+{\em ch} & The character to display. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_afe461d27b9c48d5921c00d521181f12f}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!loop@{loop}}
+\index{loop@{loop}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+loop to be run repeatedly. Equivalent to running everything in main whith a while(1). 
+
+Name\+: loop
+
+Reads characters from Serial and displays them on the LCD. Handles newline and wrapping between two rows. \Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a078e5ed7b3ca700b3b5feba40eff69f2}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!pulseEnable@{pulseEnable}}
+\index{pulseEnable@{pulseEnable}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{pulseEnable()}{pulseEnable()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a078e5ed7b3ca700b3b5feba40eff69f2} 
+void pulse\+Enable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Pulses the enable pin to latch data into the LCD. 
+
+Name\+: pulse\+Enable 
+\begin{DoxyParams}{Parameters}
+{\em data} & The byte to latch with ENABLE bit toggled. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a80266826c393af0bf7cd9ccda3b4a734}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!sendByte@{sendByte}}
+\index{sendByte@{sendByte}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{sendByte()}{sendByte()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a80266826c393af0bf7cd9ccda3b4a734} 
+void send\+Byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value}{, }\item[{uint8\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Sends a full 8-\/bit byte to the LCD by splitting it into two nibbles. 
+
+Name\+: send\+Byte 
+\begin{DoxyParams}{Parameters}
+{\em value} & value to send. \\
+\hline
+{\em mode} & command mode or data mode, 0 for command, RS for data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_ad642faaae22029bc87d822aa3692f2af}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!sendNibble@{sendNibble}}
+\index{sendNibble@{sendNibble}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{sendNibble()}{sendNibble()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_ad642faaae22029bc87d822aa3692f2af} 
+void send\+Nibble (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{nibble}{, }\item[{uint8\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Sends a 4-\/bit nibble to the LCD. 
+
+Name\+: send\+Nibble 
+\begin{DoxyParams}{Parameters}
+{\em nibble} & The upper or lower 4 bits of the data/command. \\
+\hline
+{\em mode} & command mode or data mode, 0 for command, RS for data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!setup@{setup}}
+\index{setup@{setup}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+setup all pins -\/ initializes the LCD and Serial monitor. 
+
+Name\+: setup 
+
+\label{doc-var-members}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a64a3e7676422964ce07bcbd2b9afb556}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!cursorCol@{cursorCol}}
+\index{cursorCol@{cursorCol}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{cursorCol}{cursorCol}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a64a3e7676422964ce07bcbd2b9afb556} 
+int cursor\+Col = 0}
+
+
+
+Current Column Position of LED Cursor. 
+
+\Hypertarget{_kalisi___e_e590___lab4_l_c_d_8ino_a6c25c0a837f6eb7576bd15e26e0326d3}\index{Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}!cursorRow@{cursorRow}}
+\index{cursorRow@{cursorRow}!Kalisi\_EE590\_Lab4LCD.ino@{Kalisi\_EE590\_Lab4LCD.ino}}
+\doxysubsubsection{\texorpdfstring{cursorRow}{cursorRow}}
+{\footnotesize\ttfamily \label{_kalisi___e_e590___lab4_l_c_d_8ino_a6c25c0a837f6eb7576bd15e26e0326d3} 
+int cursor\+Row = 0}
+
+
+
+Current Row Position of LED Cursor. 
+
