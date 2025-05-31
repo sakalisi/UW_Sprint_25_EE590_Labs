@@ -1,0 +1,368 @@
+\doxysection{EE590\+\_\+\+Lab5\+\_\+\+Part1/\+EE590\+\_\+\+Lab5\+\_\+\+Part1.ino File Reference}
+\hypertarget{_e_e590___lab5___part1_8ino}{}\label{_e_e590___lab5___part1_8ino}\index{EE590\_Lab5\_Part1/EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1/EE590\_Lab5\_Part1.ino}}
+
+
+Free\+RTOS-\/based SRTF Task Scheduling System on ESP32.  
+
+
+{\ttfamily \#include $<$freertos/\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/task.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$Liquid\+Crystal\+\_\+\+I2\+C.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part1_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585}{LED}}~1
+\begin{DoxyCompactList}\small\item\em Output LED pin. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a1084cfc08533afdc5463db90046c57f1}{LED\+\_\+\+TIME}}~100
+\begin{DoxyCompactList}\small\item\em LED blink duration in milliseconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a526d580d324bce60a3e964066fae77e3}{SDA\+\_\+\+PIN}}~20
+\begin{DoxyCompactList}\small\item\em I2C data pin. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a06c967e78bcedcee909a70764f879433}{SCL\+\_\+\+PIN}}~21
+\begin{DoxyCompactList}\small\item\em I2C clock pin. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a11f87da0820116f35564f15b7e2b69f2}{LCD\+\_\+\+TIME}}~100
+\begin{DoxyCompactList}\small\item\em LCD update interval in milliseconds. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part1_8ino_ac3f5ae786ea023082d01a5d0d9503908}{PRINT\+\_\+\+TIME}}~500
+\begin{DoxyCompactList}\small\item\em Serial print interval in milliseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Liquid\+Crystal\+\_\+\+I2C \mbox{\hyperlink{_e_e590___lab5___part1_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}{lcd}} (0x27, 16, 2)
+\begin{DoxyCompactList}\small\item\em 16x2 I2C LCD at address 0x27 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part1_8ino_aa3845dae865c47cfdfe37652a373aa2a}{led\+Task}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Blinks an LED until the allotted execution time expires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a2b4338007e5668fd56dfe3f333fc26d2}{counter\+Task}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Displays a counter on the LCD every 100 ms until it reaches 20 or time expires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a4d773b0b523ff172ed84864533f5b4eb}{alphabet\+Task}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Prints the alphabet to the serial monitor every 500 ms until Z or time expires. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a4ea4585de20507653ce66667bb133d6f}{schedule\+Tasks}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Implements Shortest Remaining Time First (SRTF) scheduling and resets all tasks when all are finished. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Arduino setup function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part1_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Empty main loop as tasks handle all operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const Tick\+Type\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a75818cb094cf69f33e62ddf759c8daab}{led\+Task\+Execution\+Time}} = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(500)
+\begin{DoxyCompactList}\small\item\em LED total execution time 500 ms. \end{DoxyCompactList}\item 
+const Tick\+Type\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a2e782932f0bf2f1fa35ac3bfa9a8b5cc}{counter\+Task\+Execution\+Time}} = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(2000)
+\begin{DoxyCompactList}\small\item\em LCD count total time 2 s. \end{DoxyCompactList}\item 
+const Tick\+Type\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_ae03e873e30fb2f78c6292fc4e2614e54}{alphabet\+Task\+Execution\+Time}} = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(13000)
+\begin{DoxyCompactList}\small\item\em Alphabet print total time 13 s. \end{DoxyCompactList}\item 
+volatile Tick\+Type\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a984bdb71413c08cf09f7d11793877dfa}{remaining\+Led\+Time}} = \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a75818cb094cf69f33e62ddf759c8daab}{led\+Task\+Execution\+Time}}
+\item 
+volatile Tick\+Type\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a562419e3d9d311efcc74859e5b3adf44}{remaining\+Counter\+Time}} = \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a2e782932f0bf2f1fa35ac3bfa9a8b5cc}{counter\+Task\+Execution\+Time}}
+\item 
+volatile Tick\+Type\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a1fb03c229171c45dee3187903d2cbcf3}{remaining\+Alphabet\+Time}} = \mbox{\hyperlink{_e_e590___lab5___part1_8ino_ae03e873e30fb2f78c6292fc4e2614e54}{alphabet\+Task\+Execution\+Time}}
+\item 
+volatile bool \mbox{\hyperlink{_e_e590___lab5___part1_8ino_aad881487a3ab55835ee06b42f53fa5ff}{LEDdone}} = false
+\begin{DoxyCompactList}\small\item\em Flag to track completion of LED task. \end{DoxyCompactList}\item 
+volatile bool \mbox{\hyperlink{_e_e590___lab5___part1_8ino_ada57cb5c6ac08158e5321dd76bcb0769}{COUNTdone}} = false
+\begin{DoxyCompactList}\small\item\em Flag to track completion of counter task. \end{DoxyCompactList}\item 
+volatile bool \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a776f0cda6a7f9c652e11c6db71b85184}{ALPHAdone}} = false
+\begin{DoxyCompactList}\small\item\em Flag to track completion of alphabet task. \end{DoxyCompactList}\item 
+volatile int \mbox{\hyperlink{_e_e590___lab5___part1_8ino_ab2caed1cbe66b4adb794da880e147fdc}{count}} = 0
+\begin{DoxyCompactList}\small\item\em Current LCD count value. \end{DoxyCompactList}\item 
+volatile char \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a70bdaf19fbc7da8e54f911c55459822c}{glyph}} = \textquotesingle{}A\textquotesingle{} -\/ 1
+\begin{DoxyCompactList}\small\item\em Current alphabet character. \end{DoxyCompactList}\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a441cd3d104a596813a403100482c451f}{Task\+LED\+\_\+\+Handle}} = NULL
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a3396ba0e65b7be5c82d8761db3877817}{Task\+COUNT\+\_\+\+Handle}} = NULL
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_afba22f8c2975560d2f36d26cccb0a02f}{Task\+ALPHA\+\_\+\+Handle}} = NULL
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part1_8ino_aa6fa83ed67655afffb122c95eb96924e}{Task\+Schedule\+\_\+\+Handle}} = NULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Free\+RTOS-\/based SRTF Task Scheduling System on ESP32. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{_e_e590___lab5___part1_8ino_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_e_e590___lab5___part1_8ino_a11f87da0820116f35564f15b7e2b69f2}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!LCD\_TIME@{LCD\_TIME}}
+\index{LCD\_TIME@{LCD\_TIME}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{LCD\_TIME}{LCD\_TIME}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a11f87da0820116f35564f15b7e2b69f2} 
+\#define LCD\+\_\+\+TIME~100}
+
+
+
+LCD update interval in milliseconds. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!LED@{LED}}
+\index{LED@{LED}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{LED}{LED}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585} 
+\#define LED~1}
+
+
+
+Output LED pin. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a1084cfc08533afdc5463db90046c57f1}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!LED\_TIME@{LED\_TIME}}
+\index{LED\_TIME@{LED\_TIME}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{LED\_TIME}{LED\_TIME}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a1084cfc08533afdc5463db90046c57f1} 
+\#define LED\+\_\+\+TIME~100}
+
+
+
+LED blink duration in milliseconds. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_ac3f5ae786ea023082d01a5d0d9503908}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!PRINT\_TIME@{PRINT\_TIME}}
+\index{PRINT\_TIME@{PRINT\_TIME}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{PRINT\_TIME}{PRINT\_TIME}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_ac3f5ae786ea023082d01a5d0d9503908} 
+\#define PRINT\+\_\+\+TIME~500}
+
+
+
+Serial print interval in milliseconds. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a06c967e78bcedcee909a70764f879433}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!SCL\_PIN@{SCL\_PIN}}
+\index{SCL\_PIN@{SCL\_PIN}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{SCL\_PIN}{SCL\_PIN}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a06c967e78bcedcee909a70764f879433} 
+\#define SCL\+\_\+\+PIN~21}
+
+
+
+I2C clock pin. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a526d580d324bce60a3e964066fae77e3}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!SDA\_PIN@{SDA\_PIN}}
+\index{SDA\_PIN@{SDA\_PIN}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{SDA\_PIN}{SDA\_PIN}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a526d580d324bce60a3e964066fae77e3} 
+\#define SDA\+\_\+\+PIN~20}
+
+
+
+I2C data pin. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{_e_e590___lab5___part1_8ino_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_e_e590___lab5___part1_8ino_a4d773b0b523ff172ed84864533f5b4eb}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!alphabetTask@{alphabetTask}}
+\index{alphabetTask@{alphabetTask}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{alphabetTask()}{alphabetTask()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a4d773b0b523ff172ed84864533f5b4eb} 
+void alphabet\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Prints the alphabet to the serial monitor every 500 ms until Z or time expires. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_e_e590___lab5___part1_8ino_a2b4338007e5668fd56dfe3f333fc26d2}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!counterTask@{counterTask}}
+\index{counterTask@{counterTask}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{counterTask()}{counterTask()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a2b4338007e5668fd56dfe3f333fc26d2} 
+void counter\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Displays a counter on the LCD every 100 ms until it reaches 20 or time expires. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_e_e590___lab5___part1_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!lcd@{lcd}}
+\index{lcd@{lcd}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{lcd()}{lcd()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d} 
+Liquid\+Crystal\+\_\+\+I2C lcd (\begin{DoxyParamCaption}\item[{0x27}]{}{, }\item[{16}]{}{, }\item[{2}]{}{}\end{DoxyParamCaption})}
+
+
+
+16x2 I2C LCD at address 0x27 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_aa3845dae865c47cfdfe37652a373aa2a}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!ledTask@{ledTask}}
+\index{ledTask@{ledTask}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{ledTask()}{ledTask()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_aa3845dae865c47cfdfe37652a373aa2a} 
+void led\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Blinks an LED until the allotted execution time expires. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_e_e590___lab5___part1_8ino_afe461d27b9c48d5921c00d521181f12f}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!loop@{loop}}
+\index{loop@{loop}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Empty main loop as tasks handle all operations. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a4ea4585de20507653ce66667bb133d6f}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!scheduleTasks@{scheduleTasks}}
+\index{scheduleTasks@{scheduleTasks}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{scheduleTasks()}{scheduleTasks()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a4ea4585de20507653ce66667bb133d6f} 
+void schedule\+Tasks (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Implements Shortest Remaining Time First (SRTF) scheduling and resets all tasks when all are finished. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_e_e590___lab5___part1_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!setup@{setup}}
+\index{setup@{setup}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Arduino setup function. 
+
+Initializes peripherals and creates tasks pinned to Core 0 
+
+\label{doc-var-members}
+\Hypertarget{_e_e590___lab5___part1_8ino_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_e_e590___lab5___part1_8ino_ae03e873e30fb2f78c6292fc4e2614e54}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!alphabetTaskExecutionTime@{alphabetTaskExecutionTime}}
+\index{alphabetTaskExecutionTime@{alphabetTaskExecutionTime}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{alphabetTaskExecutionTime}{alphabetTaskExecutionTime}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_ae03e873e30fb2f78c6292fc4e2614e54} 
+const Tick\+Type\+\_\+t alphabet\+Task\+Execution\+Time = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(13000)}
+
+
+
+Alphabet print total time 13 s. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a776f0cda6a7f9c652e11c6db71b85184}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!ALPHAdone@{ALPHAdone}}
+\index{ALPHAdone@{ALPHAdone}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{ALPHAdone}{ALPHAdone}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a776f0cda6a7f9c652e11c6db71b85184} 
+volatile bool ALPHAdone = false}
+
+
+
+Flag to track completion of alphabet task. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_ab2caed1cbe66b4adb794da880e147fdc}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!count@{count}}
+\index{count@{count}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_ab2caed1cbe66b4adb794da880e147fdc} 
+volatile int count = 0}
+
+
+
+Current LCD count value. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_ada57cb5c6ac08158e5321dd76bcb0769}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!COUNTdone@{COUNTdone}}
+\index{COUNTdone@{COUNTdone}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{COUNTdone}{COUNTdone}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_ada57cb5c6ac08158e5321dd76bcb0769} 
+volatile bool COUNTdone = false}
+
+
+
+Flag to track completion of counter task. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a2e782932f0bf2f1fa35ac3bfa9a8b5cc}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!counterTaskExecutionTime@{counterTaskExecutionTime}}
+\index{counterTaskExecutionTime@{counterTaskExecutionTime}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{counterTaskExecutionTime}{counterTaskExecutionTime}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a2e782932f0bf2f1fa35ac3bfa9a8b5cc} 
+const Tick\+Type\+\_\+t counter\+Task\+Execution\+Time = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(2000)}
+
+
+
+LCD count total time 2 s. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a70bdaf19fbc7da8e54f911c55459822c}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!glyph@{glyph}}
+\index{glyph@{glyph}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{glyph}{glyph}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a70bdaf19fbc7da8e54f911c55459822c} 
+volatile char glyph = \textquotesingle{}A\textquotesingle{} -\/ 1}
+
+
+
+Current alphabet character. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_aad881487a3ab55835ee06b42f53fa5ff}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!LEDdone@{LEDdone}}
+\index{LEDdone@{LEDdone}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{LEDdone}{LEDdone}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_aad881487a3ab55835ee06b42f53fa5ff} 
+volatile bool LEDdone = false}
+
+
+
+Flag to track completion of LED task. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a75818cb094cf69f33e62ddf759c8daab}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!ledTaskExecutionTime@{ledTaskExecutionTime}}
+\index{ledTaskExecutionTime@{ledTaskExecutionTime}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{ledTaskExecutionTime}{ledTaskExecutionTime}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a75818cb094cf69f33e62ddf759c8daab} 
+const Tick\+Type\+\_\+t led\+Task\+Execution\+Time = pd\+MS\+\_\+\+TO\+\_\+\+TICKS(500)}
+
+
+
+LED total execution time 500 ms. 
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a1fb03c229171c45dee3187903d2cbcf3}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!remainingAlphabetTime@{remainingAlphabetTime}}
+\index{remainingAlphabetTime@{remainingAlphabetTime}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{remainingAlphabetTime}{remainingAlphabetTime}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a1fb03c229171c45dee3187903d2cbcf3} 
+volatile Tick\+Type\+\_\+t remaining\+Alphabet\+Time = \mbox{\hyperlink{_e_e590___lab5___part1_8ino_ae03e873e30fb2f78c6292fc4e2614e54}{alphabet\+Task\+Execution\+Time}}}
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a562419e3d9d311efcc74859e5b3adf44}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!remainingCounterTime@{remainingCounterTime}}
+\index{remainingCounterTime@{remainingCounterTime}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{remainingCounterTime}{remainingCounterTime}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a562419e3d9d311efcc74859e5b3adf44} 
+volatile Tick\+Type\+\_\+t remaining\+Counter\+Time = \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a2e782932f0bf2f1fa35ac3bfa9a8b5cc}{counter\+Task\+Execution\+Time}}}
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a984bdb71413c08cf09f7d11793877dfa}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!remainingLedTime@{remainingLedTime}}
+\index{remainingLedTime@{remainingLedTime}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{remainingLedTime}{remainingLedTime}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a984bdb71413c08cf09f7d11793877dfa} 
+volatile Tick\+Type\+\_\+t remaining\+Led\+Time = \mbox{\hyperlink{_e_e590___lab5___part1_8ino_a75818cb094cf69f33e62ddf759c8daab}{led\+Task\+Execution\+Time}}}
+
+\Hypertarget{_e_e590___lab5___part1_8ino_afba22f8c2975560d2f36d26cccb0a02f}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!TaskALPHA\_Handle@{TaskALPHA\_Handle}}
+\index{TaskALPHA\_Handle@{TaskALPHA\_Handle}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{TaskALPHA\_Handle}{TaskALPHA\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_afba22f8c2975560d2f36d26cccb0a02f} 
+Task\+Handle\+\_\+t Task\+ALPHA\+\_\+\+Handle = NULL}
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a3396ba0e65b7be5c82d8761db3877817}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!TaskCOUNT\_Handle@{TaskCOUNT\_Handle}}
+\index{TaskCOUNT\_Handle@{TaskCOUNT\_Handle}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{TaskCOUNT\_Handle}{TaskCOUNT\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a3396ba0e65b7be5c82d8761db3877817} 
+Task\+Handle\+\_\+t Task\+COUNT\+\_\+\+Handle = NULL}
+
+\Hypertarget{_e_e590___lab5___part1_8ino_a441cd3d104a596813a403100482c451f}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!TaskLED\_Handle@{TaskLED\_Handle}}
+\index{TaskLED\_Handle@{TaskLED\_Handle}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{TaskLED\_Handle}{TaskLED\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_a441cd3d104a596813a403100482c451f} 
+Task\+Handle\+\_\+t Task\+LED\+\_\+\+Handle = NULL}
+
+\Hypertarget{_e_e590___lab5___part1_8ino_aa6fa83ed67655afffb122c95eb96924e}\index{EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}!TaskSchedule\_Handle@{TaskSchedule\_Handle}}
+\index{TaskSchedule\_Handle@{TaskSchedule\_Handle}!EE590\_Lab5\_Part1.ino@{EE590\_Lab5\_Part1.ino}}
+\doxysubsubsection{\texorpdfstring{TaskSchedule\_Handle}{TaskSchedule\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part1_8ino_aa6fa83ed67655afffb122c95eb96924e} 
+Task\+Handle\+\_\+t Task\+Schedule\+\_\+\+Handle = NULL}
+

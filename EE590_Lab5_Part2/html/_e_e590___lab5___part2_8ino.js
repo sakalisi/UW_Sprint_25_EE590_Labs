@@ -1,0 +1,26 @@
+var _e_e590___lab5___part2_8ino =
+[
+    [ "LED", "_e_e590___lab5___part2_8ino.html#aeb7a7ba1ab7e0406f1b5ab36d579f585", null ],
+    [ "LEDR", "_e_e590___lab5___part2_8ino.html#a988efc1db523aab3ae92974b199e9599", null ],
+    [ "SCL_PIN", "_e_e590___lab5___part2_8ino.html#a06c967e78bcedcee909a70764f879433", null ],
+    [ "SDA_PIN", "_e_e590___lab5___part2_8ino.html#a526d580d324bce60a3e964066fae77e3", null ],
+    [ "AnomalyAlarmTask", "_e_e590___lab5___part2_8ino.html#a7a78d096b7238df072738dda8b18f257", null ],
+    [ "isPrime", "_e_e590___lab5___part2_8ino.html#ab31541ab88aebece242f24e54b622ba4", null ],
+    [ "lcd", "_e_e590___lab5___part2_8ino.html#ae084e1bc8ccb35ea289ba0ca4972ea6d", null ],
+    [ "LCDTask", "_e_e590___lab5___part2_8ino.html#abf8c64acbfb49e561de9767109698eae", null ],
+    [ "LightDetectorTask", "_e_e590___lab5___part2_8ino.html#aad67a1a52e591d71933d936c283a473f", null ],
+    [ "loop", "_e_e590___lab5___part2_8ino.html#afe461d27b9c48d5921c00d521181f12f", null ],
+    [ "PrimeCalculationTask", "_e_e590___lab5___part2_8ino.html#a7e92600363f394090674db32717f6313", null ],
+    [ "setup", "_e_e590___lab5___part2_8ino.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
+    [ "currIndex", "_e_e590___lab5___part2_8ino.html#a3ed87f494a051420eb942511b9ba2ebf", null ],
+    [ "currSum", "_e_e590___lab5___part2_8ino.html#a8ce72365f4c2cb64caea5aa12dde2b74", null ],
+    [ "newLightLevel", "_e_e590___lab5___part2_8ino.html#a953e283651db5cabe86545b213d43b15", null ],
+    [ "sma", "_e_e590___lab5___part2_8ino.html#a0859ec777d38758a2d060698a412f688", null ],
+    [ "TaskANOMALY_Handle", "_e_e590___lab5___part2_8ino.html#acc6e4e42c343650845c375d29082d13d", null ],
+    [ "TaskLCD_Handle", "_e_e590___lab5___part2_8ino.html#a4080e16b635b2c3a63fb21ff5a127316", null ],
+    [ "TaskLEDR_Handle", "_e_e590___lab5___part2_8ino.html#a362c17007f84af48a1e8b9b745d8b498", null ],
+    [ "TaskPRIME_Handle", "_e_e590___lab5___part2_8ino.html#a48c2a681bc4d9ef25bff693e1561e5ab", null ],
+    [ "updatedNewVal", "_e_e590___lab5___part2_8ino.html#af9ac9d42b045f4dd122a97ed1cae89c9", null ],
+    [ "window", "_e_e590___lab5___part2_8ino.html#aa5c34454abaab92338f731a212210acd", null ],
+    [ "WINDOW_SIZE", "_e_e590___lab5___part2_8ino.html#a938a229bf4c9c73db2c0bec60872a421", null ]
+];

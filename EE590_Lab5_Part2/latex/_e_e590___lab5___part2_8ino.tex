@@ -1,0 +1,383 @@
+\doxysection{EE590\+\_\+\+Lab5\+\_\+\+Part2/\+EE590\+\_\+\+Lab5\+\_\+\+Part2.ino File Reference}
+\hypertarget{_e_e590___lab5___part2_8ino}{}\label{_e_e590___lab5___part2_8ino}\index{EE590\_Lab5\_Part2/EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2/EE590\_Lab5\_Part2.ino}}
+
+
+Free\+RTOS-\/based Light Monitoring and Anomaly Detection System using ESP32.  
+
+
+{\ttfamily \#include $<$freertos/\+Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$freertos/task.\+h$>$}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$Liquid\+Crystal\+\_\+\+I2\+C.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part2_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585}{LED}}~1
+\begin{DoxyCompactList}\small\item\em Output LED pin for anomaly alert. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a988efc1db523aab3ae92974b199e9599}{LEDR}}~18
+\begin{DoxyCompactList}\small\item\em Input photoresistor pin meant to read analog inputs. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a526d580d324bce60a3e964066fae77e3}{SDA\+\_\+\+PIN}}~20
+\begin{DoxyCompactList}\small\item\em I2C Data Pin. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a06c967e78bcedcee909a70764f879433}{SCL\+\_\+\+PIN}}~21
+\begin{DoxyCompactList}\small\item\em I2C Clock Pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Liquid\+Crystal\+\_\+\+I2C \mbox{\hyperlink{_e_e590___lab5___part2_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}{lcd}} (0x27, 16, 2)
+\begin{DoxyCompactList}\small\item\em 16x2 I2C LCD at address 0x27 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Arduino setup function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part2_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Empty main loop since tasks handle all operations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part2_8ino_aad67a1a52e591d71933d936c283a473f}{Light\+Detector\+Task}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Reads light sensor data, updates sliding window average (SMA), and sets flags. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part2_8ino_abf8c64acbfb49e561de9767109698eae}{LCDTask}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Displays light sensor value and moving average (SMA) on the LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a7a78d096b7238df072738dda8b18f257}{Anomaly\+Alarm\+Task}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Monitors SMA value and triggers LED alert if value exceeds threshold. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_e_e590___lab5___part2_8ino_ab31541ab88aebece242f24e54b622ba4}{is\+Prime}} (int n)
+\begin{DoxyCompactList}\small\item\em Checks whether a number is prime. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a7e92600363f394090674db32717f6313}{Prime\+Calculation\+Task}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Calculates prime numbers from 0 to 5000 in background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a362c17007f84af48a1e8b9b745d8b498}{Task\+LEDR\+\_\+\+Handle}} = NULL
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a4080e16b635b2c3a63fb21ff5a127316}{Task\+LCD\+\_\+\+Handle}} = NULL
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part2_8ino_acc6e4e42c343650845c375d29082d13d}{Task\+ANOMALY\+\_\+\+Handle}} = NULL
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a48c2a681bc4d9ef25bff693e1561e5ab}{Task\+PRIME\+\_\+\+Handle}} = NULL
+\item 
+int \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a953e283651db5cabe86545b213d43b15}{new\+Light\+Level}} = 0
+\begin{DoxyCompactList}\small\item\em Most recent light level that was read by LEDR. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a0859ec777d38758a2d060698a412f688}{sma}} = 0
+\begin{DoxyCompactList}\small\item\em current rolling SMA value \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a938a229bf4c9c73db2c0bec60872a421}{WINDOW\+\_\+\+SIZE}} = 5
+\begin{DoxyCompactList}\small\item\em Window size over which to calculate sliding mean. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_e_e590___lab5___part2_8ino_aa5c34454abaab92338f731a212210acd}{window}} \mbox{[}\mbox{\hyperlink{_e_e590___lab5___part2_8ino_a938a229bf4c9c73db2c0bec60872a421}{WINDOW\+\_\+\+SIZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Window of Window Size over which to calculate sliding mean. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a3ed87f494a051420eb942511b9ba2ebf}{curr\+Index}} = 0
+\begin{DoxyCompactList}\small\item\em Current Index of Window to replace older value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_e_e590___lab5___part2_8ino_a8ce72365f4c2cb64caea5aa12dde2b74}{curr\+Sum}} = 0
+\begin{DoxyCompactList}\small\item\em Current rolling sum. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_e_e590___lab5___part2_8ino_af9ac9d42b045f4dd122a97ed1cae89c9}{updated\+New\+Val}} = false
+\begin{DoxyCompactList}\small\item\em whether or not a new value has been added to the window \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Free\+RTOS-\/based Light Monitoring and Anomaly Detection System using ESP32. 
+
+
+
+\label{doc-define-members}
+\Hypertarget{_e_e590___lab5___part2_8ino_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_e_e590___lab5___part2_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!LED@{LED}}
+\index{LED@{LED}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{LED}{LED}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_aeb7a7ba1ab7e0406f1b5ab36d579f585} 
+\#define LED~1}
+
+
+
+Output LED pin for anomaly alert. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a988efc1db523aab3ae92974b199e9599}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!LEDR@{LEDR}}
+\index{LEDR@{LEDR}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{LEDR}{LEDR}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a988efc1db523aab3ae92974b199e9599} 
+\#define LEDR~18}
+
+
+
+Input photoresistor pin meant to read analog inputs. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a06c967e78bcedcee909a70764f879433}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!SCL\_PIN@{SCL\_PIN}}
+\index{SCL\_PIN@{SCL\_PIN}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{SCL\_PIN}{SCL\_PIN}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a06c967e78bcedcee909a70764f879433} 
+\#define SCL\+\_\+\+PIN~21}
+
+
+
+I2C Clock Pin. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a526d580d324bce60a3e964066fae77e3}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!SDA\_PIN@{SDA\_PIN}}
+\index{SDA\_PIN@{SDA\_PIN}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{SDA\_PIN}{SDA\_PIN}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a526d580d324bce60a3e964066fae77e3} 
+\#define SDA\+\_\+\+PIN~20}
+
+
+
+I2C Data Pin. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{_e_e590___lab5___part2_8ino_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_e_e590___lab5___part2_8ino_a7a78d096b7238df072738dda8b18f257}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!AnomalyAlarmTask@{AnomalyAlarmTask}}
+\index{AnomalyAlarmTask@{AnomalyAlarmTask}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{AnomalyAlarmTask()}{AnomalyAlarmTask()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a7a78d096b7238df072738dda8b18f257} 
+void Anomaly\+Alarm\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Monitors SMA value and triggers LED alert if value exceeds threshold. 
+
+This is meant to run on Core 1
+\begin{DoxyEnumerate}
+\item Loop Continuously
+\begin{DoxyItemize}
+\item Wait for semaphore.
+\item Get SMA value
+\item Give back the semaphore.
+\item Check if SMA indicates a light anomaly (outside thresholds).
+\item If anomaly detected, flash a LED signal.
+\item Delay 
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\Hypertarget{_e_e590___lab5___part2_8ino_ab31541ab88aebece242f24e54b622ba4}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!isPrime@{isPrime}}
+\index{isPrime@{isPrime}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{isPrime()}{isPrime()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_ab31541ab88aebece242f24e54b622ba4} 
+bool is\+Prime (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Checks whether a number is prime. 
+
+This is a helper functionf for Prime Calculation Task 
+\begin{DoxyParams}{Parameters}
+{\em n} & Integer to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if prime, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{_e_e590___lab5___part2_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!lcd@{lcd}}
+\index{lcd@{lcd}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{lcd()}{lcd()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_ae084e1bc8ccb35ea289ba0ca4972ea6d} 
+Liquid\+Crystal\+\_\+\+I2C lcd (\begin{DoxyParamCaption}\item[{0x27}]{}{, }\item[{16}]{}{, }\item[{2}]{}{}\end{DoxyParamCaption})}
+
+
+
+16x2 I2C LCD at address 0x27 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_abf8c64acbfb49e561de9767109698eae}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!LCDTask@{LCDTask}}
+\index{LCDTask@{LCDTask}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{LCDTask()}{LCDTask()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_abf8c64acbfb49e561de9767109698eae} 
+void LCDTask (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Displays light sensor value and moving average (SMA) on the LCD. 
+
+This is meant to run on Core 0
+\begin{DoxyEnumerate}
+\item Initialize Variables
+\item Loop Continuously
+\begin{DoxyItemize}
+\item Wait for semaphore.
+\item If data has changed, update the LCD with the new light level and SMA. -\/\texorpdfstring{$>$}{>} Why should it matter if its different?
+\item Give back the semaphore.
+\item Delay 
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\Hypertarget{_e_e590___lab5___part2_8ino_aad67a1a52e591d71933d936c283a473f}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!LightDetectorTask@{LightDetectorTask}}
+\index{LightDetectorTask@{LightDetectorTask}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{LightDetectorTask()}{LightDetectorTask()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_aad67a1a52e591d71933d936c283a473f} 
+void Light\+Detector\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Reads light sensor data, updates sliding window average (SMA), and sets flags. 
+
+This is meant to run on Core 0
+\begin{DoxyEnumerate}
+\item Initialize Variables -\/\texorpdfstring{$>$}{>} initialized as globals already
+\item Loop Continuously
+\begin{DoxyItemize}
+\item Read light level from the photoresistor.
+\item Take semaphore
+\item Calculate the simple moving average and update variables.
+\item Give semaphore to signal data is ready.
+\item Delay 
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\Hypertarget{_e_e590___lab5___part2_8ino_afe461d27b9c48d5921c00d521181f12f}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!loop@{loop}}
+\index{loop@{loop}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Empty main loop since tasks handle all operations. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a7e92600363f394090674db32717f6313}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!PrimeCalculationTask@{PrimeCalculationTask}}
+\index{PrimeCalculationTask@{PrimeCalculationTask}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{PrimeCalculationTask()}{PrimeCalculationTask()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a7e92600363f394090674db32717f6313} 
+void Prime\+Calculation\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Calculates prime numbers from 0 to 5000 in background. 
+
+This is meant to run on Core 1
+\begin{DoxyEnumerate}
+\item Loop from 2 to 5000
+\begin{DoxyItemize}
+\item Check if the current number is prime.
+\item If prime, print the number to the serial monitor. 
+\begin{DoxyParams}{Parameters}
+{\em arg} & Unused task parameter \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+\end{DoxyEnumerate}\Hypertarget{_e_e590___lab5___part2_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!setup@{setup}}
+\index{setup@{setup}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Arduino setup function. 
+
+
+\begin{DoxyEnumerate}
+\item Initialize pins, serial, LCD, etc
+\begin{DoxyEnumerate}
+\item Create binary semaphore for synchronizing light level data.
+\item Create Tasks
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item Create the {\ttfamily Light Detector Task} and assign it to Core 0.
+\item Create {\ttfamily LCD Task} and assign it to Core 0.
+\item Create {\ttfamily Anomaly Alarm Task} and assign it to Core 1.
+\item Create {\ttfamily Prime Calculation Task} and assign it to Core 1.
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Scheduler attempted before realizing that Free\+RTOS automatically establishes a round robin system Initializes peripherals, LCD, semaphore, and starts Free\+RTOS tasks 
+\end{DoxyEnumerate}
+\end{DoxyEnumerate}
+
+\label{doc-var-members}
+\Hypertarget{_e_e590___lab5___part2_8ino_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_e_e590___lab5___part2_8ino_a3ed87f494a051420eb942511b9ba2ebf}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!currIndex@{currIndex}}
+\index{currIndex@{currIndex}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{currIndex}{currIndex}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a3ed87f494a051420eb942511b9ba2ebf} 
+int curr\+Index = 0}
+
+
+
+Current Index of Window to replace older value. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a8ce72365f4c2cb64caea5aa12dde2b74}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!currSum@{currSum}}
+\index{currSum@{currSum}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{currSum}{currSum}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a8ce72365f4c2cb64caea5aa12dde2b74} 
+int curr\+Sum = 0}
+
+
+
+Current rolling sum. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a953e283651db5cabe86545b213d43b15}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!newLightLevel@{newLightLevel}}
+\index{newLightLevel@{newLightLevel}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{newLightLevel}{newLightLevel}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a953e283651db5cabe86545b213d43b15} 
+int new\+Light\+Level = 0}
+
+
+
+Most recent light level that was read by LEDR. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a0859ec777d38758a2d060698a412f688}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!sma@{sma}}
+\index{sma@{sma}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{sma}{sma}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a0859ec777d38758a2d060698a412f688} 
+int sma = 0}
+
+
+
+current rolling SMA value 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_acc6e4e42c343650845c375d29082d13d}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!TaskANOMALY\_Handle@{TaskANOMALY\_Handle}}
+\index{TaskANOMALY\_Handle@{TaskANOMALY\_Handle}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{TaskANOMALY\_Handle}{TaskANOMALY\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_acc6e4e42c343650845c375d29082d13d} 
+Task\+Handle\+\_\+t Task\+ANOMALY\+\_\+\+Handle = NULL}
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a4080e16b635b2c3a63fb21ff5a127316}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!TaskLCD\_Handle@{TaskLCD\_Handle}}
+\index{TaskLCD\_Handle@{TaskLCD\_Handle}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{TaskLCD\_Handle}{TaskLCD\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a4080e16b635b2c3a63fb21ff5a127316} 
+Task\+Handle\+\_\+t Task\+LCD\+\_\+\+Handle = NULL}
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a362c17007f84af48a1e8b9b745d8b498}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!TaskLEDR\_Handle@{TaskLEDR\_Handle}}
+\index{TaskLEDR\_Handle@{TaskLEDR\_Handle}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{TaskLEDR\_Handle}{TaskLEDR\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a362c17007f84af48a1e8b9b745d8b498} 
+Task\+Handle\+\_\+t Task\+LEDR\+\_\+\+Handle = NULL}
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a48c2a681bc4d9ef25bff693e1561e5ab}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!TaskPRIME\_Handle@{TaskPRIME\_Handle}}
+\index{TaskPRIME\_Handle@{TaskPRIME\_Handle}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{TaskPRIME\_Handle}{TaskPRIME\_Handle}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a48c2a681bc4d9ef25bff693e1561e5ab} 
+Task\+Handle\+\_\+t Task\+PRIME\+\_\+\+Handle = NULL}
+
+\Hypertarget{_e_e590___lab5___part2_8ino_af9ac9d42b045f4dd122a97ed1cae89c9}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!updatedNewVal@{updatedNewVal}}
+\index{updatedNewVal@{updatedNewVal}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{updatedNewVal}{updatedNewVal}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_af9ac9d42b045f4dd122a97ed1cae89c9} 
+bool updated\+New\+Val = false}
+
+
+
+whether or not a new value has been added to the window 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_aa5c34454abaab92338f731a212210acd}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!window@{window}}
+\index{window@{window}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_aa5c34454abaab92338f731a212210acd} 
+int window\mbox{[}\mbox{\hyperlink{_e_e590___lab5___part2_8ino_a938a229bf4c9c73db2c0bec60872a421}{WINDOW\+\_\+\+SIZE}}\mbox{]}}
+
+
+
+Window of Window Size over which to calculate sliding mean. 
+
+\Hypertarget{_e_e590___lab5___part2_8ino_a938a229bf4c9c73db2c0bec60872a421}\index{EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}!WINDOW\_SIZE@{WINDOW\_SIZE}}
+\index{WINDOW\_SIZE@{WINDOW\_SIZE}!EE590\_Lab5\_Part2.ino@{EE590\_Lab5\_Part2.ino}}
+\doxysubsubsection{\texorpdfstring{WINDOW\_SIZE}{WINDOW\_SIZE}}
+{\footnotesize\ttfamily \label{_e_e590___lab5___part2_8ino_a938a229bf4c9c73db2c0bec60872a421} 
+const int WINDOW\+\_\+\+SIZE = 5}
+
+
+
+Window size over which to calculate sliding mean. 
+
